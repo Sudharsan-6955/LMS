@@ -1,30 +1,19 @@
 // button
 document.getElementById('FavBtn1').addEventListener('click', function () {
     showToast('Fav');
-
-    if (window.innerWidth < 768) {
-        this.style.backgroundColor = 'white'; // Change button color
-        this.style.color = 'purple'; // Change text color
-        this.style.setProperty('color', 'purple', 'important'); // Force color change
-    }
 });
-
-
-
 document.getElementById('CartBtn1').addEventListener('click', function () {
     showToast('Cart');
 });
 document.getElementById('FavBtn2').addEventListener('click', function () {
     showToast('Fav');
 });
-
 document.getElementById('CartBtn2').addEventListener('click', function () {
     showToast('Cart');
 });
 document.getElementById('FavBtn3').addEventListener('click', function () {
     showToast('Fav');
 });
-
 document.getElementById('CartBtn3').addEventListener('click', function () {
     showToast('Cart');
 });
