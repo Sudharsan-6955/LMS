@@ -4,12 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LMS HOME</title>
+    <title>Courses</title>
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="index.css">
-    <script defer src="script.js"></script>
-    <script defer src="swipper.js"></script>
-    <script defer src="slide.js"></script>
+    <script defer src="sec.js"></script>
     <!-- fontawesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
@@ -20,9 +18,12 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Syne:wght@400..800&display=swap"
         rel="stylesheet">
-    <!-- swipper link -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+    <!-- Swiper JS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
     <style>
         /* Hide scrollbar but allow scrolling */
         #slider::-webkit-scrollbar {
@@ -35,19 +36,6 @@
             /* For Internet Explorer */
             scrollbar-width: none;
             /* For Firefox */
-        }
-
-        .carousel-item {
-            position: absolute;
-            inset: 0;
-            background-size: cover;
-            background-position: center;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-        }
-
-        .active {
-            opacity: 1;
         }
 
         /* buttons */
@@ -83,140 +71,40 @@
             animation: slideOut 0.5s forwards;
         }
 
-        /* cards */
-
-        .swiper-pagination-bullet {
-            width: 10px;
-            height: 10px;
-            background-color: #ccc;
-            opacity: 0.7;
-            border-radius: 50%;
-            margin: 0 5px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* Active pagination bullet style with loading animation */
-        .swiper-pagination-bullet-active {
-            width: 55px;
-            height: 10px;
-            background-color: #7200FF;
-            opacity: 1;
-            border-radius: 5px;
-        }
-
-        .swiper-pagination-bullet-active::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(255, 255, 255, 0.2);
-            transform: scaleX(0);
-            transform-origin: left;
-            animation: loading 3s linear forwards;
-        }
-
-        @keyframes loading {
-            to {
-                transform: scaleX(1);
-            }
-        }
-
         .swiper-container {
-            display: flex;
-            justify-content: center;
-        }
-
-        .swiper-slide {
-            display: flex;
-            justify-content: center;
-        }
-
-
-        /* Flip animation */
-        .flip-card {
-            perspective: 1000px;
-        }
-
-        .flip-card-inner {
             position: relative;
             width: 100%;
-            height: 100%;
-            transition: transform 0.6s;
-            transform-style: preserve-3d;
-        }
-
-        .flip-card:hover .flip-card-inner {
-            transform: rotateY(-180deg);
-
-        }
-
-        .flip-card-front,
-        .flip-card-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-        }
-
-        .flip-card-back {
-            transform: rotateY(-180deg);
-        }
-
-        .scroll-container {
-            width: 100%;
+            /* Adjust based on your layout */
             overflow: hidden;
-            position: relative;
-            background: #f5f5f5;
-            /* Background color */
-            padding: 10px 0;
-            white-space: nowrap;
-            border-radius: px;
         }
 
-        .scroll-content {
+        #slider {
             display: flex;
-            gap: 20px;
-            /* Space between items */
-            animation: scroll-left 10s linear infinite;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            scrollbar-width: none;
+            /* For Firefox */
         }
 
-        .box {
+        #slider::-webkit-scrollbar {
+            display: none;
+            /* For Chrome, Safari, and Opera */
+        }
+
+        #slider1::-webkit-scrollbar {
+            display: none;
+            /* For Chrome, Safari, and Opera */
+        }
+
+        .card-item {
             flex: 0 0 auto;
-            width: 100px;
-            /* Adjust box size */
-            height: 100px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid #ddd;
-            border-radius: 100px;
-            background: white;
-        }
-
-        .box img {
-            width: 85%;
-            height: auto;
-        }
-
-        @keyframes scroll-left {
-            from {
-                transform: translateX(0);
-            }
-
-            to {
-                transform: translateX(-50%);
-            }
+            width: 400px;
+            /* Set desired width */
+            margin-right: 1px;
+            /* Space between cards */
         }
 
 
-        .partners {
-            /* Other styles */
-            animation: scroll 30s linear infinite;
-            /* Slower scroll */
-        }
 
 
 
@@ -243,11 +131,11 @@
     </style>
 </head>
 
-<body class="bg-[#F1F3F6]">
+<body class="font-[poppins]">
     <nav
         class="navbar h-16 fixed top-0 left-0 w-full  flex justify-between items-center px-5 bg-white shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]  z-30">
         <!-- Left Side: Logo -->
-        <a href="index.html">
+         <a href="index.html">
         <div class="logo-container flex items-center justify-center space-x-1 max-md:flex-col max-md:space-x-0 ">
             <p class="brand-name font-bold text-xl max-md:text-sm text-[#7200FF]">Zubyte</p>
             <p class="brand-sub font-bold text-xl max-md:text-sm">LMS</p>
@@ -265,7 +153,7 @@
         <div class="menu hidden min-[1099px]:flex space-x-6 ">
             <div class="menu-item flex items-center space-x-2">
                 <i class="fa-solid fa-book"></i>
-                <a href="Sec.html">Courses</a>
+                <p>Courses</p>
             </div>
             <div class="dropdown relative group inline-block">
                 <i class="fa-solid fa-question"></i>
@@ -307,7 +195,7 @@
                 <i class="fa-regular fa-user text-[#7200FF]"></i>
                 <p class="font-[poppins] text-sm">Login/Signup</p>
             </a>
-            <a href="Sec.html" class="drawer-item flex items-center space-x-2">
+            <a href="#" class="drawer-item flex items-center space-x-2">
                 <i class="fa-solid fa-book text-[#7200FF]"></i>
                 <p class="font-[poppins] text-sm">Courses</p>
             </a>
@@ -334,143 +222,39 @@
 
         </div>
     </nav>
-    <!-- carousel section -->
-    <div class="flex items-center justify-center lg:mt-[2rem] min-h-[24rem] bg-gray-100 max-md:-mt-[4rem]">
-        <div class="h-[34rem] w-screen max-md:h-[12rem]">
-            <div id="carousel" class="relative h-full w-full overflow-hidden">
-                <!-- First Slide -->
-                <div class="carousel-item h-full w-full">
-                    <!-- Image visible on medium screens and larger (e.g., laptops) -->
-                    <img src="./assets/box-2.svg" class="hidden md:block w-full h-auto" alt="Image for larger screens">
-                    <!-- Image visible on small screens (e.g., tablets, mobile phones) -->
-                    <img src="./assets/Boxmob-1.svg" class="block md:hidden w-full h-auto"
-                        alt="Image for smaller screens">
-                </div>
-                <!-- Second Slide -->
-                <div class="carousel-item h-full w-full">
-                    <!-- Image visible on medium screens and larger (e.g., laptops) -->
-                    <img src="./assets/box-1.svg" class="hidden md:block w-full h-auto" alt="Image for larger screens">
-                    <!-- Image visible on small screens (e.g., tablets, mobile phones) -->
-                    <img src="./assets/Boxmob-2.svg" class="block  md:hidden w-full h-auto"
-                        alt="Image for smaller screens">
-                </div>
-                <!-- Left Navigation Button -->
-                <button id="prev"
-                    class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-[#7200FF] bg-opacity-50 text-white p-2 sm:p-3 rounded-full z-10">
-                    &larr;
-                </button>
-                <!-- Right Navigation Button -->
-                <button id="next"
-                    class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white text-[#7200FF] bg-opacity-50 p-2 sm:p-3 rounded-full z-10">
-                    &rarr;
-                </button>
-            </div>
+    <div class="mt-14 p-16 bg-[#7200FF] justify-items-center">
+        <div class="font-[poppins] text-center ">
+            <p class="text-4xl text-white  font-semibold">Welcome to <span class="text-black">Zubyte </span>
+                <span>LMS</span>
+            </p>
+            <p class="text-md text-white my-2">Lorem Ipsum amid Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                sed doeiusmodLorem </p>
         </div>
     </div>
-    <div class="lg:hidden block ">
-        <div class="p-3 bg-white mx-3 rounded-lg max-md:-mt-16 ">
-            <p class="text-lg font-[poppins] font-medium">Lorem <span class="text-[#7200FF]">Ipsum </span>amid</p>
-            <p class="text-xs font-">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod</p>
-        </div>
-    </div>
-    <!--see more-->
-    <div class="lg:hidden block w-[90%] my-2 p-2 mx-auto bg-[#7200FF] text-white border-2 border-transparent 
-     rounded-lg transform duration-300 ease-in-out 
-     hover:bg-white hover:text-[#7200FF] hover:border-[#7200FF]">
-        <div class="flex gap-2 items-center justify-center ">
-            <a href="#">
-                <p class="font-bold font-[poppins] text-sm transition-colors duration-300">View more</p>
+    <!-- button -->
+    <div class="pt-12 px-11 list-none">
+        <li class="card-item flex-none max-w-fit ">
+            <a href="#" class="">
+                <div class="border border-black max-md:px-2 px-3 rounded-4xl p-2 bg-[#7200FF] text-[#FFFFFF]">
+                    <p class="text-sm font-semibold">Frontend-Development</p>
+                </div>
             </a>
-            <span class="flex space-x-1 text-xl transition-colors duration-300">
-                <a href="#"><i class="fas fa-angle-right"></i></a>
-            </span>
-        </div>
+        </li>
     </div>
-    <!-- Secon div -->
-    <div class=" w-full pl-16 pr-16 my-4 max-md:px-2 max-md:pl-7">
-        <h1 class="text-3xl text-black font-[poppins] font-semibold">Zubyte <span class="text-[#7200FF]">LMS</span></h1>
-        <p class="text-sm text-[#000000]">Lorem Ipsum amid Lorem ipsum<span class="text-[#7200FF]">dolor sit
-                amet,</span> consectetur adipiscing elit, sed do <span class="text-[#7200FF]">eiusmodLorem</span></p>
-    </div>
-    <!-- courses -->
-    <div class="relative font-[poppins] w-full max-w-screen max-md:p-2 px-16 pt-1 max-md:px-5">
-        <!-- Slider Container (Horizontal Scroll) -->
-        <div id="slider" class="overflow-x-auto  scroll-smooth">
-            <ul class="flex gap-4">
-                <!-- Card 1 -->
-                <li class="card-item flex-none max-w-fit ">
-                    <a href="#" class="">
-                        <div class="border border-black rounded-4xl p-2 hover:bg-[#7200FF] hover:text-[#FFFFFF]">
-                            <p href="#" class="text-xs">Frontend-Development</p>
-                        </div>
-                    </a>
-                </li>
-                <!-- Card 2 -->
-                <li class="card-item flex-none max-w-fit  ">
-                    <a href="#" class="">
-                        <div class="border border-black rounded-4xl p-2  hover:bg-[#7200FF] hover:text-[#FFFFFF]">
-                            <p class="text-xs">Backend-Development</p>
-                        </div>
-                    </a>
-                </li>
-                <!-- Card 2 -->
-                <li class="card-item flex-none max-w-fit  ">
-                    <a href="#" class="">
-                        <div class="border border-black rounded-4xl p-2  hover:bg-[#7200FF] hover:text-[#FFFFFF]">
-                            <p class="text-xs">Application-Development</p>
-                        </div>
-                    </a>
-                </li>
-
-                <!-- Card 3 -->
-                <li class="card-item flex-none max-w-fit  ">
-                    <a href="#" class="">
-                        <div class="border border-black rounded-4xl p-2  hover:bg-[#7200FF] hover:text-[#FFFFFF]">
-                            <p class="text-xs">Networking</p>
-                        </div>
-                    </a>
-                </li>
-                <!-- Card 4 -->
-                <li class="card-item flex-none max-w-fit  ">
-                    <a href="#" class="">
-                        <div class="border border-black rounded-4xl p-2  hover:bg-[#7200FF] hover:text-[#FFFFFF]">
-                            <p class="text-xs">Cyber-security</p>
-                        </div>
-                    </a>
-                </li>
-                <!-- Card 5 -->
-                <li class="card-item flex-none max-w-fit  ">
-                    <a href="#" class="">
-                        <div class="border border-black rounded-4xl p-2  hover:bg-[#7200FF] hover:text-[#FFFFFF]">
-                            <p class="text-xs">Programming languages</p>
-                        </div>
-                    </a>
-                </li>
-                <!-- Card 6 -->
-                <li class="card-item flex-none max-w-fit  ">
-                    <a href="#" class="">
-                        <div class="border border-black rounded-4xl p-2  hover:bg-[#7200FF] hover:text-[#FFFFFF]">
-                            <p class="text-xs">Ms-Excel</p>
-                        </div>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
-    </div>
-    <!-- course slider -->
-    <div class="swiper-container relative mx-auto w-full max-w-screen px-9 max-md:px-3">
+    <div class="swiper-container relative mx-auto w-full max-w-7xl px-2 max-md:px-0 ">
         <!-- Slider Container (Horizontal Scroll) -->
         <div id="slider"
-            class="overflow-x-auto scrollbar-thin scrollbar-track-gray-200 scrollbar-thumb-gray-400 scroll-smooth">
+            class="overflow-x-auto   scrollbar-thin scrollbar-track-gray-200 scrollbar-thumb-gray-400 scroll-smooth">
+            <button
+                class="scroll-arrow max-md:hidden block max-md:p-2 left-[10px] left-arrow absolute z-10 p-3 top-[50%]  transform translateY-[50%] bg-[#7200FF] text-white rounded-[100%] cursor-pointer">←
+            </button>
             <ul class="flex gap-1">
                 <!-- Card 1  -->
-                <li class="card-item flex-none w-[90%]  sm:w-[46%] md:w-[30%]">
-                    <div class="p-4 bg-[#F1F3F6]">
+                <li class="card-item lg:mx-4 max-md:p-4 flex-none  w-[90%] sm:w-[30%] md:w-[32%] ">
+                    <div class="p-10 ">
                         <img src="./assets/Rectangle 32.png" class="w-full rounded-md" alt="Card Image">
-                        <a href="#"
-                            class="text-lg text-black font-semibold max-md:text-sm font-[poppins] my-2">Introduction of
-                            Frontend-Development</a>
+                        <p class="text-lg text-black font-semibold font-[poppins] max-md:text-sm my-2">Introduction of
+                            Frontend-Development</p>
                         <div>
                             <div class="flex justify-start gap-4">
                                 <div class="flex justify-around gap-1 my-2">
@@ -483,7 +267,7 @@
                                     </div>
                                     <p class="text-xs font-[poppins] text-[#7200FF]">(1500)</p>
                                 </div>
-                                <div class="flex justify-start gap-2 pt-0.5">
+                                <div class="flex justify-start gap-2">
                                     <div class="flex gap-2">
                                         <button id="FavBtn1"
                                             class="group w-6 h-6 border border-black rounded-[100%] hover:border-2 hover:border-[#7200FF] hover:bg-white bg-[#7200FF] flex justify-center items-center">
@@ -531,8 +315,8 @@
                     </div>
                 </li>
                 <!-- Card 2 -->
-                <li class="card-item flex-none w-[90%]  sm:w-[46%] md:w-[30%]">
-                    <div class="p-4 bg-[#F1F3F6]">
+                <li class="card-item max-md:p-4 flex-none  w-[90%] sm:w-[30%] md:w-[32%] ">
+                    <div class="p-10 ">
                         <img src="./assets/Rectangle 32.png" class="w-full rounded-md" alt="Card Image">
                         <p class="text-lg text-black font-semibold font-[poppins] max-md:text-sm my-2">Introduction of
                             Frontend-Development</p>
@@ -548,7 +332,7 @@
                                     </div>
                                     <p class="text-xs font-[poppins] text-[#7200FF]">(1500)</p>
                                 </div>
-                                <div class="flex justify-start gap-2 pt-0.5">
+                                <div class="flex justify-start gap-2">
                                     <div class="flex gap-2">
                                         <button id="FavBtn2"
                                             class="group w-6 h-6 border border-black rounded-[100%] hover:border-2 hover:border-[#7200FF] hover:bg-white bg-[#7200FF] flex justify-center items-center">
@@ -596,8 +380,8 @@
                     </div>
                 </li>
                 <!-- Card 3 -->
-                <li class="card-item flex-none w-[90%]  sm:w-[46%] md:w-[30%]">
-                    <div class="p-4 bg-[#F1F3F6]">
+                <li class="card-item max-md:p-4 flex-none  w-[90%] sm:w-[30%] md:w-[32%] ">
+                    <div class="p-10 ">
                         <img src="./assets/Rectangle 32.png" class="w-full rounded-md" alt="Card Image">
                         <p class="text-lg text-black font-semibold font-[poppins] max-md:text-sm my-2">Introduction of
                             Frontend-Development</p>
@@ -611,10 +395,9 @@
                                         <i class="fa-regular fa-star text-gray-300"></i>
                                         <i class="fa-regular fa-star text-gray-300"></i>
                                     </div>
-
                                     <p class="text-xs font-[poppins] text-[#7200FF]">(1500)</p>
                                 </div>
-                                <div class="flex justify-start gap-2 pt-0.5">
+                                <div class="flex justify-start gap-2">
                                     <div class="flex gap-2">
                                         <button id="FavBtn3"
                                             class="group w-6 h-6 border border-black rounded-[100%] hover:border-2 hover:border-[#7200FF] hover:bg-white bg-[#7200FF] flex justify-center items-center">
@@ -662,8 +445,8 @@
                     </div>
                 </li>
                 <!-- Card 4 -->
-                <li class="card-item flex-none w-[90%]  sm:w-[46%] md:w-[30%]">
-                    <div class="p-4 bg-[#F1F3F6]">
+                <li class="card-item max-md:p-4 flex-none  w-[90%] sm:w-[30%] md:w-[32%] ">
+                    <div class="p-10 ">
                         <img src="./assets/Rectangle 32.png" class="w-full rounded-md" alt="Card Image">
                         <p class="text-lg text-black font-semibold font-[poppins] max-md:text-sm my-2">Introduction of
                             Frontend-Development</p>
@@ -679,7 +462,7 @@
                                     </div>
                                     <p class="text-xs font-[poppins] text-[#7200FF]">(1500)</p>
                                 </div>
-                                <div class="flex justify-start gap-2 pt-0.5">
+                                <div class="flex justify-start gap-2">
                                     <div class="flex gap-2">
                                         <button id="FavBtn4"
                                             class="group w-6 h-6 border border-black rounded-[100%] hover:border-2 hover:border-[#7200FF] hover:bg-white bg-[#7200FF] flex justify-center items-center">
@@ -727,10 +510,10 @@
                     </div>
                 </li>
                 <!-- Card 5 -->
-                <li class="card-item flex-none w-[90%]  sm:w-[46%] md:w-[30%]">
-                    <div class="p-4 bg-[#F1F3F6]">
+                <li class="card-item max-md:p-4 flex-none  w-[90%] sm:w-[30%] md:w-[32%] ">
+                    <div class="p-10 ">
                         <img src="./assets/Rectangle 32.png" class="w-full rounded-md" alt="Card Image">
-                        <p class="text-lg text-black font-semibold font-[poppins]  max-md:text-sm my-2">Introduction of
+                        <p class="text-lg text-black font-semibold font-[poppins] max-md:text-sm my-2">Introduction of
                             Frontend-Development</p>
                         <div>
                             <div class="flex justify-start gap-4">
@@ -744,7 +527,7 @@
                                     </div>
                                     <p class="text-xs font-[poppins] text-[#7200FF]">(1500)</p>
                                 </div>
-                                <div class="flex justify-start gap-2 pt-0.5">
+                                <div class="flex justify-start gap-2">
                                     <div class="flex gap-2">
                                         <button id="FavBtn5"
                                             class="group w-6 h-6 border border-black rounded-[100%] hover:border-2 hover:border-[#7200FF] hover:bg-white bg-[#7200FF] flex justify-center items-center">
@@ -791,9 +574,9 @@
                         </div>
                     </div>
                 </li>
-                <!-- Card 6 -->
-                <li class="card-item flex-none w-[90%]  sm:w-[46%] md:w-[30%]">
-                    <div class="p-4 bg-[#F1F3F6]">
+                <!-- Card 6  -->
+                <li class="card-item max-md:p-4 flex-none  w-[90%] sm:w-[30%] md:w-[32%] ">
+                    <div class="p-10 ">
                         <img src="./assets/Rectangle 32.png" class="w-full rounded-md" alt="Card Image">
                         <p class="text-lg text-black font-semibold font-[poppins] max-md:text-sm my-2">Introduction of
                             Frontend-Development</p>
@@ -809,7 +592,7 @@
                                     </div>
                                     <p class="text-xs font-[poppins] text-[#7200FF]">(1500)</p>
                                 </div>
-                                <div class="flex justify-start gap-2 pt-0.5">
+                                <div class="flex justify-start gap-2">
                                     <div class="flex gap-2">
                                         <button id="FavBtn6"
                                             class="group w-6 h-6 border border-black rounded-[100%] hover:border-2 hover:border-[#7200FF] hover:bg-white bg-[#7200FF] flex justify-center items-center">
@@ -857,463 +640,462 @@
                     </div>
                 </li>
             </ul>
+            <button
+                class="scroll-arrow max-md:hidden block max-md:p-2 right-arrow absolute z-10 p-3 top-[50%] right-[10px] transform translateY-[-50%] bg-[#7200FF] text-white rounded-[100%] cursor-pointer">→
+            </button>
         </div>
     </div>
-    <!--see more-->
-    <div class="block w-fit p-3 px-4 mx-auto bg-[#7200FF] text-white border-2 border-transparent 
-           rounded-bl-2xl rounded-se-2xl transform duration-300 ease-in-out 
-           hover:bg-white hover:text-[#7200FF] hover:border-[#7200FF]">
-        <div class="flex gap-2 items-center">
-            <a href="#">
-                <p class="font-bold font-[poppins] text-sm transition-colors duration-300">See more</p>
+    <div class="pt-2 px-11 list-none">
+        <li class="card-item flex-none max-w-fit ">
+            <a href="#" class="">
+                <div class="border border-black px-3 rounded-4xl p-2 bg-[#7200FF] text-[#FFFFFF]">
+                    <p class="text-sm font-semibold">Backend-Development</p>
+                </div>
             </a>
-            <span class="flex space-x-1 text-xl transition-colors duration-300">
-                <a href="#"><i class="fas fa-angle-right"></i></a>
-                <a href="#"><i class="fas fa-angle-right"></i></a>
-                <a href="#"><i class="fas fa-angle-right"></i></a>
+        </li>
+    </div>
+    <div id="extraContent" class="hidden mt-4">
+        <div class="swiper-container relative mx-auto w-full max-w-7xl px-2 max-md:px-0 ">
+            <!-- Slider Container (Horizontal Scroll) -->
+            <button id="slideLeftBtn"
+                class="slide-btn-left max-md:hidden block left-[10px] max-md:p-2 left-arrow absolute z-10 p-3 top-[50%]  transform translateY-[50%] bg-[#7200FF] text-white rounded-[100%] cursor-pointer">
+                ←
+            </button>
+            <div id="slider1"
+                class="overflow-x-auto scrollbar-thin scrollbar-track-gray-200 scrollbar-thumb-gray-400 scroll-smooth">
+                <ul class="flex gap-0.5">
+
+                    <!-- Card 1  -->
+                    <li class="card-item lg:mx-4 max-md:p-4 max-md:-mx-1 flex-none  w-[90%] sm:w-[30%] md:w-[32%] ">
+                        <div class="p-10 ">
+                            <img src="./assets/Rectangle 32.png" class="w-full rounded-md" alt="Card Image">
+                            <p class="text-lg text-black font-semibold font-[poppins] max-md:text-sm my-2">Introduction
+                                of
+                                Frontend-Development</p>
+                            <div>
+                                <div class="flex justify-start gap-4">
+                                    <div class="flex justify-around gap-1 my-2">
+                                        <div class="flex gap-0.5">
+                                            <i class="fa-solid fa-star text-amber-300"></i>
+                                            <i class="fa-solid fa-star text-amber-300"></i>
+                                            <i class="fa-solid fa-star text-amber-300 "></i>
+                                            <i class="fa-regular fa-star text-gray-300"></i>
+                                            <i class="fa-regular fa-star text-gray-300"></i>
+                                        </div>
+                                        <p class="text-xs font-[poppins] text-[#7200FF]">(1500)</p>
+                                    </div>
+                                    <div class="flex justify-start gap-2">
+                                        <div class="flex gap-2">
+                                            <button id="FavBtn7"
+                                                class="group w-6 h-6 border border-black rounded-[100%] hover:border-2 hover:border-[#7200FF] hover:bg-white bg-[#7200FF] flex justify-center items-center">
+                                                <i
+                                                    class="fa-regular fa-heart text-white text-xs group-hover:text-[#7200FF]"></i>
+                                            </button>
+                                            <button id="CartBtn7"
+                                                class="group w-6 h-6 border border-black rounded-[100%] hover:border-2 hover:border-[#7200FF] hover:bg-white bg-[#7200FF] flex justify-center items-center">
+                                                <i
+                                                    class="fa-solid fa-cart-shopping text-white text-[10px] group-hover:text-[#7200FF]"></i>
+                                            </button>
+                                        </div>
+                                        <!-- Toast container -->
+                                        <div id="toastContainer" class="fixed bottom-5 right-5 space-y-4 z-30">
+                                            <!-- Fav Toast -->
+                                            <div id="Fav"
+                                                class="hidden max-w-xs w-full bg-white border-l-4 border-blue-500 text-blue-700 px-4 py-2 shadow-md rounded slide-in"
+                                                role="alert">
+                                                <div class="flex items-center">
+                                                    <p>
+                                                        <i class="fa-solid fa-heart text-[#7200FF] px-1"></i> Added to
+                                                        favorite
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <!-- Cart Toast -->
+                                            <div id="Cart"
+                                                class="hidden max-w-xs w-full bg-white border-l-4 border-blue-500 text-blue-700 px-4 py-2 shadow-md rounded slide-in"
+                                                role="alert">
+                                                <div class="flex items-center">
+                                                    <p>
+                                                        <i class="fa-solid fa-cart-shopping text-[#7200FF] px-2"></i>
+                                                        Added
+                                                        to cart
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="text-xs text-gray-400 font-[poppins]">
+                                    Lorem ipsum dolor sit amet. Nam provident provident sit autem perferendis et
+                                    error.Lorem
+                                    ipsum dolor sit amet. Nam provident providert.
+                                </p>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- Card 2 -->
+                    <li class="card-item max-md:p-4 flex-none  w-[90%] sm:w-[30%] md:w-[32%] ">
+                        <div class="p-10 ">
+                            <img src="./assets/Rectangle 32.png" class="w-full rounded-md" alt="Card Image">
+                            <p class="text-lg text-black font-semibold font-[poppins] max-md:text-sm my-2">Introduction
+                                of
+                                Frontend-Development</p>
+                            <div>
+                                <div class="flex justify-start gap-4">
+                                    <div class="flex justify-around gap-1 my-2">
+                                        <div class="flex gap-0.5">
+                                            <i class="fa-solid fa-star text-amber-300"></i>
+                                            <i class="fa-solid fa-star text-amber-300"></i>
+                                            <i class="fa-solid fa-star text-amber-300 "></i>
+                                            <i class="fa-regular fa-star text-gray-300"></i>
+                                            <i class="fa-regular fa-star text-gray-300"></i>
+                                        </div>
+                                        <p class="text-xs font-[poppins] text-[#7200FF]">(1500)</p>
+                                    </div>
+                                    <div class="flex justify-start gap-2 pt-0.5">
+                                        <div class="flex gap-2">
+                                            <button id="FavBtn8"
+                                                class="group w-6 h-6 border border-black rounded-[100%] hover:border-2 hover:border-[#7200FF] hover:bg-white bg-[#7200FF] flex justify-center items-center">
+                                                <i
+                                                    class="fa-regular fa-heart text-white text-xs group-hover:text-[#7200FF]"></i>
+                                            </button>
+                                            <button id="CartBtn8"
+                                                class="group w-6 h-6 border border-black rounded-[100%] hover:border-2 hover:border-[#7200FF] hover:bg-white bg-[#7200FF] flex justify-center items-center">
+                                                <i
+                                                    class="fa-solid fa-cart-shopping text-white text-[10px] group-hover:text-[#7200FF]"></i>
+                                            </button>
+                                        </div>
+                                        <!-- Toast container -->
+                                        <div id="toastContainer" class="fixed bottom-5 right-5 space-y-4 z-30">
+                                            <!-- Fav Toast -->
+                                            <div id="Fav"
+                                                class="hidden max-w-xs w-full bg-white border-l-4 border-blue-500 text-blue-700 px-4 py-2 shadow-md rounded slide-in"
+                                                role="alert">
+                                                <div class="flex items-center">
+                                                    <p>
+                                                        <i class="fa-solid fa-heart text-[#7200FF] px-1"></i> Added to
+                                                        favorite
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <!-- Cart Toast -->
+                                            <div id="Cart"
+                                                class="hidden max-w-xs w-full bg-white border-l-4 border-blue-500 text-blue-700 px-4 py-2 shadow-md rounded slide-in"
+                                                role="alert">
+                                                <div class="flex items-center">
+                                                    <p>
+                                                        <i class="fa-solid fa-cart-shopping text-[#7200FF] px-2"></i>
+                                                        Added
+                                                        to cart
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="text-xs text-gray-400 font-[poppins]">
+                                    Lorem ipsum dolor sit amet. Nam provident provident sit autem perferendis et
+                                    error.Lorem
+                                    ipsum dolor sit amet. Nam provident providert.
+                                </p>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- Card 3 -->
+                    <li class="card-item max-md:p-4 flex-none  w-[90%] sm:w-[30%] md:w-[32%]%] ">
+                        <div class="p-10">
+                            <img src="./assets/Rectangle 32.png" class="w-full rounded-md" alt="Card Image">
+                            <p class="text-lg text-black font-semibold font-[poppins] max-md:text-sm my-2">Introduction
+                                of
+                                Frontend-Development</p>
+                            <div>
+                                <div class="flex justify-start gap-4">
+                                    <div class="flex justify-around gap-1 my-2">
+                                        <div class="flex gap-0.5">
+                                            <i class="fa-solid fa-star text-amber-300"></i>
+                                            <i class="fa-solid fa-star text-amber-300"></i>
+                                            <i class="fa-solid fa-star text-amber-300 "></i>
+                                            <i class="fa-regular fa-star text-gray-300"></i>
+                                            <i class="fa-regular fa-star text-gray-300"></i>
+                                        </div>
+
+                                        <p class="text-xs font-[poppins] text-[#7200FF]">(1500)</p>
+                                    </div>
+                                    <div class="flex justify-start gap-2 pt-0.5">
+                                        <div class="flex gap-2">
+                                            <button id="FavBtn9"
+                                                class="group w-6 h-6 border border-black rounded-[100%] hover:border-2 hover:border-[#7200FF] hover:bg-white bg-[#7200FF] flex justify-center items-center">
+                                                <i
+                                                    class="fa-regular fa-heart text-white text-xs group-hover:text-[#7200FF]"></i>
+                                            </button>
+                                            <button id="CartBtn9"
+                                                class="group w-6 h-6 border border-black rounded-[100%] hover:border-2 hover:border-[#7200FF] hover:bg-white bg-[#7200FF] flex justify-center items-center">
+                                                <i
+                                                    class="fa-solid fa-cart-shopping text-white text-[10px] group-hover:text-[#7200FF]"></i>
+                                            </button>
+                                        </div>
+                                        <!-- Toast container -->
+                                        <div id="toastContainer" class="fixed bottom-5 right-5 space-y-4 z-30">
+                                            <!-- Fav Toast -->
+                                            <div id="Fav"
+                                                class="hidden max-w-xs w-full bg-white border-l-4 border-blue-500 text-blue-700 px-4 py-2 shadow-md rounded slide-in"
+                                                role="alert">
+                                                <div class="flex items-center">
+                                                    <p>
+                                                        <i class="fa-solid fa-heart text-[#7200FF] px-1"></i> Added to
+                                                        favorite
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <!-- Cart Toast -->
+                                            <div id="Cart"
+                                                class="hidden max-w-xs w-full bg-white border-l-4 border-blue-500 text-blue-700 px-4 py-2 shadow-md rounded slide-in"
+                                                role="alert">
+                                                <div class="flex items-center">
+                                                    <p>
+                                                        <i class="fa-solid fa-cart-shopping text-[#7200FF] px-2"></i>
+                                                        Added
+                                                        to cart
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="text-xs text-gray-400 font-[poppins]">
+                                    Lorem ipsum dolor sit amet. Nam provident provident sit autem perferendis et
+                                    error.Lorem
+                                    ipsum dolor sit amet. Nam provident providert.
+                                </p>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- Card 4 -->
+                    <li class="card-item max-md:p-4 flex-none  w-[90%] sm:w-[30%] md:w-[32%] ">
+                        <div class="p-10">
+                            <img src="./assets/Rectangle 32.png" class="w-full rounded-md" alt="Card Image">
+                            <p class="text-lg text-black font-semibold font-[poppins] max-md:text-sm my-2">Introduction
+                                of
+                                Frontend-Development</p>
+                            <div>
+                                <div class="flex justify-start gap-4">
+                                    <div class="flex justify-around gap-1 my-2">
+                                        <div class="flex gap-0.5">
+                                            <i class="fa-solid fa-star text-amber-300"></i>
+                                            <i class="fa-solid fa-star text-amber-300"></i>
+                                            <i class="fa-solid fa-star text-amber-300 "></i>
+                                            <i class="fa-regular fa-star text-gray-300"></i>
+                                            <i class="fa-regular fa-star text-gray-300"></i>
+                                        </div>
+                                        <p class="text-xs font-[poppins] text-[#7200FF]">(1500)</p>
+                                    </div>
+                                    <div class="flex justify-start gap-2 pt-0.5">
+                                        <div class="flex gap-2">
+                                            <button id="FavBtn10"
+                                                class="group w-6 h-6 border border-black rounded-[100%] hover:border-2 hover:border-[#7200FF] hover:bg-white bg-[#7200FF] flex justify-center items-center">
+                                                <i
+                                                    class="fa-regular fa-heart text-white text-xs group-hover:text-[#7200FF]"></i>
+                                            </button>
+                                            <button id="CartBtn10"
+                                                class="group w-6 h-6 border border-black rounded-[100%] hover:border-2 hover:border-[#7200FF] hover:bg-white bg-[#7200FF] flex justify-center items-center">
+                                                <i
+                                                    class="fa-solid fa-cart-shopping text-white text-[10px] group-hover:text-[#7200FF]"></i>
+                                            </button>
+                                        </div>
+                                        <!-- Toast container -->
+                                        <div id="toastContainer" class="fixed bottom-5 right-5 space-y-4 z-30">
+                                            <!-- Fav Toast -->
+                                            <div id="Fav"
+                                                class="hidden max-w-xs w-full bg-white border-l-4 border-blue-500 text-blue-700 px-4 py-2 shadow-md rounded slide-in"
+                                                role="alert">
+                                                <div class="flex items-center">
+                                                    <p>
+                                                        <i class="fa-solid fa-heart text-[#7200FF] px-1"></i> Added to
+                                                        favorite
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <!-- Cart Toast -->
+                                            <div id="Cart"
+                                                class="hidden max-w-xs w-full bg-white border-l-4 border-blue-500 text-blue-700 px-4 py-2 shadow-md rounded slide-in"
+                                                role="alert">
+                                                <div class="flex items-center">
+                                                    <p>
+                                                        <i class="fa-solid fa-cart-shopping text-[#7200FF] px-2"></i>
+                                                        Added
+                                                        to cart
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="text-xs text-gray-400 font-[poppins]">
+                                    Lorem ipsum dolor sit amet. Nam provident provident sit autem perferendis et
+                                    error.Lorem
+                                    ipsum dolor sit amet. Nam provident providert.
+                                </p>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- Card 5 -->
+                    <li class="card-item max-md:p-4 flex-none  w-[90%] sm:w-[30%] md:w-[32%]">
+                        <div class="p-10">
+                            <img src="./assets/Rectangle 32.png" class="w-full rounded-md" alt="Card Image">
+                            <p class="text-lg text-black font-semibold font-[poppins]  max-md:text-sm my-2">Introduction
+                                of
+                                Frontend-Development</p>
+                            <div>
+                                <div class="flex justify-start gap-4">
+                                    <div class="flex justify-around gap-1 my-2">
+                                        <div class="flex gap-0.5">
+                                            <i class="fa-solid fa-star text-amber-300"></i>
+                                            <i class="fa-solid fa-star text-amber-300"></i>
+                                            <i class="fa-solid fa-star text-amber-300 "></i>
+                                            <i class="fa-regular fa-star text-gray-300"></i>
+                                            <i class="fa-regular fa-star text-gray-300"></i>
+                                        </div>
+                                        <p class="text-xs font-[poppins] text-[#7200FF]">(1500)</p>
+                                    </div>
+                                    <div class="flex justify-start gap-2 pt-0.5">
+                                        <div class="flex gap-2">
+                                            <button id="FavBtn11"
+                                                class="group w-6 h-6 border border-black rounded-[100%] hover:border-2 hover:border-[#7200FF] hover:bg-white bg-[#7200FF] flex justify-center items-center">
+                                                <i
+                                                    class="fa-regular fa-heart text-white text-xs group-hover:text-[#7200FF]"></i>
+                                            </button>
+                                            <button id="CartBtn11"
+                                                class="group w-6 h-6 border border-black rounded-[100%] hover:border-2 hover:border-[#7200FF] hover:bg-white bg-[#7200FF] flex justify-center items-center">
+                                                <i
+                                                    class="fa-solid fa-cart-shopping text-white text-[10px] group-hover:text-[#7200FF]"></i>
+                                            </button>
+                                        </div>
+                                        <!-- Toast container -->
+                                        <div id="toastContainer" class="fixed bottom-5 right-5 space-y-4 z-30">
+                                            <!-- Fav Toast -->
+                                            <div id="Fav"
+                                                class="hidden max-w-xs w-full bg-white border-l-4 border-blue-500 text-blue-700 px-4 py-2 shadow-md rounded slide-in"
+                                                role="alert">
+                                                <div class="flex items-center">
+                                                    <p>
+                                                        <i class="fa-solid fa-heart text-[#7200FF] px-1"></i> Added to
+                                                        favorite
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <!-- Cart Toast -->
+                                            <div id="Cart"
+                                                class="hidden max-w-xs w-full bg-white border-l-4 border-blue-500 text-blue-700 px-4 py-2 shadow-md rounded slide-in"
+                                                role="alert">
+                                                <div class="flex items-center">
+                                                    <p>
+                                                        <i class="fa-solid fa-cart-shopping text-[#7200FF] px-2"></i>
+                                                        Added
+                                                        to cart
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="text-xs text-gray-400 font-[poppins]">
+                                    Lorem ipsum dolor sit amet. Nam provident provident sit autem perferendis et
+                                    error.Lorem
+                                    ipsum dolor sit amet. Nam provident providert.
+                                </p>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- Card 6  -->
+                    <li class="card-item flex-none max-md:p-4 max-md:-mx-10 w-[90%] sm:w-[40%] md:w-[32%] ">
+                        <div class="p-10 ">
+                            <img src="./assets/Rectangle 32.png" class="w-full rounded-md" alt="Card Image">
+                            <p class="text-lg text-black font-semibold font-[poppins] max-md:text-sm my-2">Introduction
+                                of
+                                Frontend-Development</p>
+                            <div>
+                                <div class="flex justify-start gap-4">
+                                    <div class="flex justify-around gap-1 my-2">
+                                        <div class="flex gap-0.5">
+                                            <i class="fa-solid fa-star text-amber-300"></i>
+                                            <i class="fa-solid fa-star text-amber-300"></i>
+                                            <i class="fa-solid fa-star text-amber-300 "></i>
+                                            <i class="fa-regular fa-star text-gray-300"></i>
+                                            <i class="fa-regular fa-star text-gray-300"></i>
+                                        </div>
+                                        <p class="text-xs font-[poppins] text-[#7200FF]">(1500)</p>
+                                    </div>
+                                    <div class="flex justify-start gap-2">
+                                        <div class="flex gap-2">
+                                            <button id="FavBtn12"
+                                                class="group w-6 h-6 border border-black rounded-[100%] hover:border-2 hover:border-[#7200FF] hover:bg-white bg-[#7200FF] flex justify-center items-center">
+                                                <i
+                                                    class="fa-regular fa-heart text-white text-xs group-hover:text-[#7200FF]"></i>
+                                            </button>
+                                            <button id="CartBtn12"
+                                                class="group w-6 h-6 border border-black rounded-[100%] hover:border-2 hover:border-[#7200FF] hover:bg-white bg-[#7200FF] flex justify-center items-center">
+                                                <i
+                                                    class="fa-solid fa-cart-shopping text-white text-[10px] group-hover:text-[#7200FF]"></i>
+                                            </button>
+                                        </div>
+                                        <!-- Toast container -->
+                                        <div id="toastContainer" class="fixed bottom-5 right-5 space-y-4 z-30">
+                                            <!-- Fav Toast -->
+                                            <div id="Fav"
+                                                class="hidden max-w-xs w-full bg-white border-l-4 border-blue-500 text-blue-700 px-4 py-2 shadow-md rounded slide-in"
+                                                role="alert">
+                                                <div class="flex items-center">
+                                                    <p>
+                                                        <i class="fa-solid fa-heart text-[#7200FF] px-1"></i> Added to
+                                                        favorite
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <!-- Cart Toast -->
+                                            <div id="Cart"
+                                                class="hidden max-w-xs w-full bg-white border-l-4 border-blue-500 text-blue-700 px-4 py-2 shadow-md rounded slide-in"
+                                                role="alert">
+                                                <div class="flex items-center">
+                                                    <p>
+                                                        <i class="fa-solid fa-cart-shopping text-[#7200FF] px-2"></i>
+                                                        Added
+                                                        to cart
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="text-xs text-gray-400 font-[poppins]">
+                                    Lorem ipsum dolor sit amet. Nam provident provident sit autem perferendis et
+                                    error.Lorem
+                                    ipsum dolor sit amet. Nam provident providert.
+                                </p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <button id="slideRightBtn"
+                class="slide-btn-right max-md:hidden block max-md:p-2 left-arrow absolute z-10 p-3 top-[50%] right-[10px] transform translateY-[50%] bg-[#7200FF] text-white rounded-[100%] cursor-pointer">
+                →
+            </button>
+        </div>
+    </div>
+    <div id="seeMoreBtn" class="block w-fit p-3 px-4 mx-auto border-2 border-transparent 
+           rounded-bl-2xl rounded-se-2xl transform duration-300 ease-in-out 
+         text-[#7200FF]  :">
+        <div class="flex gap-1 items-center cursor-pointer">
+            <p
+                class="font-bold font-[poppins]  text-sm transition-colors duration-300 decoration-[#7200FF] underline underline-offset-4">
+                See more</p>
+            <span class="flex text-xl transition-colors duration-300">
+                <i class="fas fa-angle-right"></i>
+                <i class="fas fa-angle-right"></i>
+                <i class="fas fa-angle-right"></i>
             </span>
         </div>
-    </div>
-    <div class="px-16 mt-4  max-md:px-2 max-md:pl-7">
-        <h1 class="text-3xl text-black font-[poppins] font-semibold">Testimo<span class="text-[#7200FF]">nials</span>
-        </h1>
-        <p class="text-sm text-[#000000]  ">Lorem Ipsum amid Lorem ipsum<span class="text-[#7200FF]">dolor sit
-                amet,</span> consectetur adipiscing elit, sed do <span class="text-[#7200FF]">eiusmodLorem</span></p>
-    </div>
-    <div class=" flex justify-center items-center min-h-96">
-        <!-- Swiper Container -->
-        <div class="w-full max-w-5xl mx-auto px-4 ">
-            <div class="swiper mySwiper">
-                <div class="swiper-wrapper">
-                    <!-- Card 1 -->
-                    <div class="swiper-slide">
-                        <div class="flip-card bg-white shadow-lg rounded-2xl w-64 h-72 p-5">
-                            <div class="flip-card-inner">
-                                <!-- Front Face -->
-                                <div class="flip-card-front  p-3">
-                                    <i class="fa-solid fa-quote-left font-[Poppins] text-xl text-[#7200FF]"></i>
-                                    <p class="text-sm font-[poppins]  text-black mt-2 my-2">Lorem ipsum dolor sit amet
-                                        consectetur. At donec mollis nulla amet.
-                                        Elementum nibh lacus adipiscing integer.</p>
-                                    <div class="flex gap-0.5">
-                                        <i class="fa-solid fa-star text-amber-300"></i>
-                                        <i class="fa-solid fa-star text-amber-300"></i>
-                                        <i class="fa-solid fa-star text-amber-300 "></i>
-                                        <i class="fa-solid fa-star text-amber-300"></i>
-                                        <i class="fa-regular fa-star text-gray-300"></i>
-                                    </div>
-                                    <div class="justify-around flex my-5 gap-1">
-                                        <div class="justify-items-center font-[Poppins] pt-3">
-                                            <p class="text-sm">Manikandan</p>
-                                            <p class="text-xs">Frontend-Developer</p>
-                                        </div>
-                                        <div class="">
-                                            <img src="./assets/Serious Young Boy with Glasses Cartoon Illustration.jpg"
-                                                class="w-14 rounded-full " alt="Image">
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Back Face -->
-                                <div class="flip-card-back flex flex-col bg-white text-white p- rounded-lg">
-                                    <i class="fa-solid fa-quote-left font-[Poppins] text-xl text-[#7200FF]"></i>
-                                    <div class="justify-around p-4">
-                                        <div class="">
-                                            <img src="./assets/Serious Young Boy with Glasses Cartoon Illustration.jpg"
-                                                class="w-20 rounded-full mx-auto my-3" alt="Image">
-                                        </div>
-                                        <div class="text-black font-[Poppins] justify-items-center ">
-                                            <p class="">Manikandan</p>
-                                            <p class="text-xs">Frontend-Developer</p>
-                                        </div>
-                                        <div class="flex gap-0.5 justify-center my-5">
-                                            <i class="fa-solid fa-star text-amber-300"></i>
-                                            <i class="fa-solid fa-star text-amber-300"></i>
-                                            <i class="fa-solid fa-star text-amber-300 "></i>
-                                            <i class="fa-solid fa-star text-amber-300"></i>
-                                            <i class="fa-regular fa-star text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Card 2 -->
-                    <div class="swiper-slide">
-                        <div class="flip-card bg-white shadow-lg rounded-2xl w-64 h-72 p-5">
-                            <div class="flip-card-inner">
-                                <!-- Front Face -->
-                                <div class="flip-card-front  p-3">
-                                    <i class="fa-solid fa-quote-left font-[Poppins] text-xl text-[#7200FF]"></i>
-                                    <p class="text-sm font-[poppins]  text-black mt-2 my-2">Lorem ipsum dolor sit amet
-                                        consectetur. At donec mollis nulla amet.
-                                        Elementum nibh lacus adipiscing integer.</p>
-                                    <div class="flex gap-0.5">
-                                        <i class="fa-solid fa-star text-amber-300"></i>
-                                        <i class="fa-solid fa-star text-amber-300"></i>
-                                        <i class="fa-solid fa-star text-amber-300 "></i>
-                                        <i class="fa-solid fa-star text-amber-300"></i>
-                                        <i class="fa-regular fa-star text-gray-300"></i>
-                                    </div>
-                                    <div class="justify-around flex my-5 gap-1">
-                                        <div class="justify-items-center font-[Poppins] pt-3">
-                                            <p class="text-sm">Manikandan</p>
-                                            <p class="text-xs">Frontend-Developer</p>
-                                        </div>
-                                        <div class="">
-                                            <img src="./assets/Serious Young Boy with Glasses Cartoon Illustration.jpg"
-                                                class="w-14 rounded-full " alt="Image">
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Back Face -->
-                                <div class="flip-card-back flex flex-col bg-white text-white p- rounded-lg">
-                                    <i class="fa-solid fa-quote-left font-[Poppins] text-xl text-[#7200FF]"></i>
-                                    <div class="justify-around p-4">
-                                        <div class="">
-                                            <img src="./assets/Serious Young Boy with Glasses Cartoon Illustration.jpg"
-                                                class="w-20 rounded-full mx-auto my-3" alt="Image">
-                                        </div>
-                                        <div class="text-black font-[Poppins] justify-items-center ">
-                                            <p class="">Manikandan</p>
-                                            <p class="text-xs">Frontend-Developer</p>
-                                        </div>
-                                        <div class="flex gap-0.5 justify-center my-5">
-                                            <i class="fa-solid fa-star text-amber-300"></i>
-                                            <i class="fa-solid fa-star text-amber-300"></i>
-                                            <i class="fa-solid fa-star text-amber-300 "></i>
-                                            <i class="fa-solid fa-star text-amber-300"></i>
-                                            <i class="fa-regular fa-star text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Card 3 -->
-                    <div class="swiper-slide">
-                        <div class="flip-card bg-white shadow-lg rounded-2xl w-64 h-72 p-5">
-                            <div class="flip-card-inner">
-                                <!-- Front Face -->
-                                <div class="flip-card-front  p-3">
-                                    <i class="fa-solid fa-quote-left font-[Poppins] text-xl text-[#7200FF]"></i>
-                                    <p class="text-sm font-[poppins]  text-black mt-2 my-2">Lorem ipsum dolor sit amet
-                                        consectetur. At donec mollis nulla amet.
-                                        Elementum nibh lacus adipiscing integer.</p>
-                                    <div class="flex gap-0.5">
-                                        <i class="fa-solid fa-star text-amber-300"></i>
-                                        <i class="fa-solid fa-star text-amber-300"></i>
-                                        <i class="fa-solid fa-star text-amber-300 "></i>
-                                        <i class="fa-solid fa-star text-amber-300"></i>
-                                        <i class="fa-regular fa-star text-gray-300"></i>
-                                    </div>
-                                    <div class="justify-around flex my-5 gap-1">
-                                        <div class="justify-items-center font-[Poppins] pt-3">
-                                            <p class="text-sm">Manikandan</p>
-                                            <p class="text-xs">Frontend-Developer</p>
-                                        </div>
-                                        <div class="">
-                                            <img src="./assets/Serious Young Boy with Glasses Cartoon Illustration.jpg"
-                                                class="w-14 rounded-full " alt="Image">
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Back Face -->
-                                <div class="flip-card-back flex flex-col bg-white text-white p- rounded-lg">
-                                    <i class="fa-solid fa-quote-left font-[Poppins] text-xl text-[#7200FF]"></i>
-                                    <div class="justify-around p-4">
-                                        <div class="">
-                                            <img src="./assets/Serious Young Boy with Glasses Cartoon Illustration.jpg"
-                                                class="w-20 rounded-full mx-auto my-3" alt="Image">
-                                        </div>
-                                        <div class="text-black font-[Poppins] justify-items-center ">
-                                            <p class="">Manikandan</p>
-                                            <p class="text-xs">Frontend-Developer</p>
-                                        </div>
-                                        <div class="flex gap-0.5 justify-center my-5">
-                                            <i class="fa-solid fa-star text-amber-300"></i>
-                                            <i class="fa-solid fa-star text-amber-300"></i>
-                                            <i class="fa-solid fa-star text-amber-300 "></i>
-                                            <i class="fa-solid fa-star text-amber-300"></i>
-                                            <i class="fa-regular fa-star text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Card 4 -->
-                    <div class="swiper-slide">
-                        <div class="flip-card bg-white shadow-lg rounded-2xl w-64 h-72 p-5">
-                            <div class="flip-card-inner">
-                                <!-- Front Face -->
-                                <div class="flip-card-front  p-3">
-                                    <i class="fa-solid fa-quote-left font-[Poppins] text-xl text-[#7200FF]"></i>
-                                    <p class="text-sm font-[poppins]  text-black mt-2 my-2">Lorem ipsum dolor sit amet
-                                        consectetur. At donec mollis nulla amet.
-                                        Elementum nibh lacus adipiscing integer.</p>
-                                    <div class="flex gap-0.5">
-                                        <i class="fa-solid fa-star text-amber-300"></i>
-                                        <i class="fa-solid fa-star text-amber-300"></i>
-                                        <i class="fa-solid fa-star text-amber-300 "></i>
-                                        <i class="fa-solid fa-star text-amber-300"></i>
-                                        <i class="fa-regular fa-star text-gray-300"></i>
-                                    </div>
-                                    <div class="justify-around flex my-5 gap-1">
-                                        <div class="justify-items-center font-[Poppins] pt-3">
-                                            <p class="text-sm">Manikandan</p>
-                                            <p class="text-xs">Frontend-Developer</p>
-                                        </div>
-                                        <div class="">
-                                            <img src="./assets/Serious Young Boy with Glasses Cartoon Illustration.jpg"
-                                                class="w-14 rounded-full " alt="Image">
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Back Face -->
-                                <div class="flip-card-back flex flex-col bg-white text-white p- rounded-lg">
-                                    <i class="fa-solid fa-quote-left font-[Poppins] text-xl text-[#7200FF]"></i>
-                                    <div class="justify-around p-4">
-                                        <div class="">
-                                            <img src="./assets/Serious Young Boy with Glasses Cartoon Illustration.jpg"
-                                                class="w-20 rounded-full mx-auto my-3" alt="Image">
-                                        </div>
-                                        <div class="text-black font-[Poppins] justify-items-center ">
-                                            <p class="">Manikandan</p>
-                                            <p class="text-xs">Frontend-Developer</p>
-                                        </div>
-                                        <div class="flex gap-0.5 justify-center my-5">
-                                            <i class="fa-solid fa-star text-amber-300"></i>
-                                            <i class="fa-solid fa-star text-amber-300"></i>
-                                            <i class="fa-solid fa-star text-amber-300 "></i>
-                                            <i class="fa-solid fa-star text-amber-300"></i>
-                                            <i class="fa-regular fa-star text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Card 5 -->
-                    <div class="swiper-slide">
-                        <div class="flip-card bg-white shadow-lg rounded-2xl w-64 h-72 p-5">
-                            <div class="flip-card-inner">
-                                <!-- Front Face -->
-                                <div class="flip-card-front  p-3">
-                                    <i class="fa-solid fa-quote-left font-[Poppins] text-xl text-[#7200FF]"></i>
-                                    <p class="text-sm font-[poppins]  text-black mt-2 my-2">Lorem ipsum dolor sit amet
-                                        consectetur. At donec mollis nulla amet.
-                                        Elementum nibh lacus adipiscing integer.</p>
-                                    <div class="flex gap-0.5">
-                                        <i class="fa-solid fa-star text-amber-300"></i>
-                                        <i class="fa-solid fa-star text-amber-300"></i>
-                                        <i class="fa-solid fa-star text-amber-300 "></i>
-                                        <i class="fa-solid fa-star text-amber-300"></i>
-                                        <i class="fa-regular fa-star text-gray-300"></i>
-                                    </div>
-                                    <div class="justify-around flex my-5 gap-1">
-                                        <div class="justify-items-center font-[Poppins] pt-3">
-                                            <p class="text-sm">Manikandan</p>
-                                            <p class="text-xs">Frontend-Developer</p>
-                                        </div>
-                                        <div class="">
-                                            <img src="./assets/Serious Young Boy with Glasses Cartoon Illustration.jpg"
-                                                class="w-14 rounded-full " alt="Image">
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Back Face -->
-                                <div class="flip-card-back flex flex-col bg-white text-white p- rounded-lg">
-                                    <i class="fa-solid fa-quote-left font-[Poppins] text-xl text-[#7200FF]"></i>
-                                    <div class="justify-around p-4">
-                                        <div class="">
-                                            <img src="./assets/Serious Young Boy with Glasses Cartoon Illustration.jpg"
-                                                class="w-20 rounded-full mx-auto my-3" alt="Image">
-                                        </div>
-                                        <div class="text-black font-[Poppins] justify-items-center ">
-                                            <p class="">Manikandan</p>
-                                            <p class="text-xs">Frontend-Developer</p>
-                                        </div>
-                                        <div class="flex gap-0.5 justify-center my-5">
-                                            <i class="fa-solid fa-star text-amber-300"></i>
-                                            <i class="fa-solid fa-star text-amber-300"></i>
-                                            <i class="fa-solid fa-star text-amber-300 "></i>
-                                            <i class="fa-solid fa-star text-amber-300"></i>
-                                            <i class="fa-regular fa-star text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Card 6 -->
-                    <div class="swiper-slide">
-                        <div class="flip-card bg-white shadow-lg rounded-2xl w-64 h-72 p-5">
-                            <div class="flip-card-inner">
-                                <!-- Front Face -->
-                                <div class="flip-card-front  p-3">
-                                    <i class="fa-solid fa-quote-left font-[Poppins] text-xl text-[#7200FF]"></i>
-                                    <p class="text-sm font-[poppins]  text-black mt-2 my-2">Lorem ipsum dolor sit amet
-                                        consectetur. At donec mollis nulla amet.
-                                        Elementum nibh lacus adipiscing integer.</p>
-                                    <div class="flex gap-0.5">
-                                        <i class="fa-solid fa-star text-amber-300"></i>
-                                        <i class="fa-solid fa-star text-amber-300"></i>
-                                        <i class="fa-solid fa-star text-amber-300 "></i>
-                                        <i class="fa-solid fa-star text-amber-300"></i>
-                                        <i class="fa-regular fa-star text-gray-300"></i>
-                                    </div>
-                                    <div class="justify-around flex my-5 gap-1">
-                                        <div class="justify-items-center font-[Poppins] pt-3">
-                                            <p class="text-sm">Manikandan</p>
-                                            <p class="text-xs">Frontend-Developer</p>
-                                        </div>
-                                        <div class="">
-                                            <img src="./assets/Serious Young Boy with Glasses Cartoon Illustration.jpg"
-                                                class="w-14 rounded-full " alt="Image">
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Back Face -->
-                                <div class="flip-card-back flex flex-col bg-white text-white p- rounded-lg">
-                                    <i class="fa-solid fa-quote-left font-[Poppins] text-xl text-[#7200FF]"></i>
-                                    <div class="justify-around p-4">
-                                        <div class="">
-                                            <img src="./assets/Serious Young Boy with Glasses Cartoon Illustration.jpg"
-                                                class="w-20 rounded-full mx-auto my-3" alt="Image">
-                                        </div>
-                                        <div class="text-black font-[Poppins] justify-items-center ">
-                                            <p class="">Manikandan</p>
-                                            <p class="text-xs">Frontend-Developer</p>
-                                        </div>
-                                        <div class="flex gap-0.5 justify-center my-5">
-                                            <i class="fa-solid fa-star text-amber-300"></i>
-                                            <i class="fa-solid fa-star text-amber-300"></i>
-                                            <i class="fa-solid fa-star text-amber-300 "></i>
-                                            <i class="fa-solid fa-star text-amber-300"></i>
-                                            <i class="fa-regular fa-star text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Card 7 -->
-                    <div class="swiper-slide">
-                        <div class="flip-card bg-white shadow-lg rounded-2xl w-64 h-72 p-5">
-                            <div class="flip-card-inner">
-                                <!-- Front Face -->
-                                <div class="flip-card-front  p-3">
-                                    <i class="fa-solid fa-quote-left font-[Poppins] text-xl text-[#7200FF]"></i>
-                                    <p class="text-sm font-[poppins]  text-black mt-2 my-2">Lorem ipsum dolor sit amet
-                                        consectetur. At donec mollis nulla amet.
-                                        Elementum nibh lacus adipiscing integer.</p>
-                                    <div class="flex gap-0.5">
-                                        <i class="fa-solid fa-star text-amber-300"></i>
-                                        <i class="fa-solid fa-star text-amber-300"></i>
-                                        <i class="fa-solid fa-star text-amber-300 "></i>
-                                        <i class="fa-solid fa-star text-amber-300"></i>
-                                        <i class="fa-regular fa-star text-gray-300"></i>
-                                    </div>
-                                    <div class="justify-around flex my-5 gap-1">
-                                        <div class="justify-items-center font-[Poppins] pt-3">
-                                            <p class="text-sm">Manikandan</p>
-                                            <p class="text-xs">Frontend-Developer</p>
-                                        </div>
-                                        <div class="">
-                                            <img src="./assets/Serious Young Boy with Glasses Cartoon Illustration.jpg"
-                                                class="w-14 rounded-full " alt="Image">
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Back Face -->
-                                <div class="flip-card-back flex flex-col bg-white text-white p- rounded-lg">
-                                    <i class="fa-solid fa-quote-left font-[Poppins] text-xl text-[#7200FF]"></i>
-                                    <div class="justify-around p-4">
-                                        <div class="">
-                                            <img src="./assets/Serious Young Boy with Glasses Cartoon Illustration.jpg"
-                                                class="w-20 rounded-full mx-auto my-3" alt="Image">
-                                        </div>
-                                        <div class="text-black font-[Poppins] justify-items-center ">
-                                            <p class="">Manikandan</p>
-                                            <p class="text-xs">Frontend-Developer</p>
-                                        </div>
-                                        <div class="flex gap-0.5 justify-center my-5">
-                                            <i class="fa-solid fa-star text-amber-300"></i>
-                                            <i class="fa-solid fa-star text-amber-300"></i>
-                                            <i class="fa-solid fa-star text-amber-300 "></i>
-                                            <i class="fa-solid fa-star text-amber-300"></i>
-                                            <i class="fa-regular fa-star text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Add more cards similarly -->
-                </div>
-
-                <!-- Pagination -->
-                <div class="my-16">
-                    <div class="swiper-pagination"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- partners -->
-    <div class="px-1 my-10 ">
-        <p class="text-center text-black font-[poppins] font-bold my-5 text-3xl">Part<span
-                class="text-[#7200FF]">ner</span></p>
-        <div class="scroll-container">
-            <div class="scroll-content">
-                <!-- Repeated Image Boxes -->
-                <div class="box  "><img class="rounded-full"
-                        src="./assets/Serious Young Boy with Glasses Cartoon Illustration.jpg" alt="Logo"></div>
-                <div class="box  "><img class="rounded-full"
-                        src="./assets/Serious Young Boy with Glasses Cartoon Illustration.jpg" alt="Logo"></div>
-                <div class="box  "><img class="rounded-full"
-                        src="./assets/Serious Young Boy with Glasses Cartoon Illustration.jpg" alt="Logo"></div>
-                <div class="box  "><img class="rounded-full"
-                        src="./assets/Serious Young Boy with Glasses Cartoon Illustration.jpg" alt="Logo"></div>
-                <div class="box  "><img class="rounded-full"
-                        src="./assets/Serious Young Boy with Glasses Cartoon Illustration.jpg" alt="Logo"></div>
-
-                <!-- Duplicate for seamless scrolling -->
-
-                <div class="box  "><img class="rounded-full"
-                        src="./assets/Serious Young Boy with Glasses Cartoon Illustration.jpg" alt="Logo"></div>
-                <div class="box  "><img class="rounded-full"
-                        src="./assets/Serious Young Boy with Glasses Cartoon Illustration.jpg" alt="Logo"></div>
-                <div class="box  "><img class="rounded-full"
-                        src="./assets/Serious Young Boy with Glasses Cartoon Illustration.jpg" alt="Logo"></div>
-                <div class="box  "><img class="rounded-full"
-                        src="./assets/Serious Young Boy with Glasses Cartoon Illustration.jpg" alt="Logo"></div>
-                <div class="box  "><img class="rounded-full"
-                        src="./assets/Serious Young Boy with Glasses Cartoon Illustration.jpg" alt="Logo"></div>
-                <div class="box  "><img class="rounded-full"
-                        src="./assets/Serious Young Boy with Glasses Cartoon Illustration.jpg" alt="Logo"></div>
-                <div class="box  "><img class="rounded-full"
-                        src="./assets/Serious Young Boy with Glasses Cartoon Illustration.jpg" alt="Logo"></div>
-                <div class="box  "><img class="rounded-full"
-                        src="./assets/Serious Young Boy with Glasses Cartoon Illustration.jpg" alt="Logo"></div>
-                <div class="box  "><img class="rounded-full"
-                        src="./assets/Serious Young Boy with Glasses Cartoon Illustration.jpg" alt="Logo"></div>
-                <div class="box  "><img class="rounded-full"
-                        src="./assets/Serious Young Boy with Glasses Cartoon Illustration.jpg" alt="Logo"></div>
-                <div class="box  "><img class="rounded-full"
-                        src="./assets/Serious Young Boy with Glasses Cartoon Illustration.jpg" alt="Logo"></div>
-                <div class="box  "><img class="rounded-full"
-                        src="./assets/Serious Young Boy with Glasses Cartoon Illustration.jpg" alt="Logo"></div>
-                <div class="box  "><img class="rounded-full"
-                        src="./assets/Serious Young Boy with Glasses Cartoon Illustration.jpg" alt="Logo"></div>
-
-            </div>
-        </div>
-
-
-
-
     </div>
     <!-- footer -->
     <div class="bg-[#7200FF]">
@@ -1452,5 +1234,4 @@
         </div>
     </div>
 </body>
-
 </html>
