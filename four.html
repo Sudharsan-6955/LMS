@@ -19,6 +19,28 @@
         href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Syne:wght@400..800&display=swap"
         rel="stylesheet">
 </head>
+<style>
+     #nav-drawer {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 65%;
+            /* Adjust width as needed */
+            height: 100%;
+            background-color: white;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            border-right: 1px solid #ddd;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            transition: left 0.3s ease-in-out;
+        }
+
+        #nav-drawer.open {
+            left: 0;
+        }
+</style>
 
 <body class="font-[poppins] bg-[#F1F3F6]">
     <!-- nav -->

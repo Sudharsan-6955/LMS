@@ -119,7 +119,7 @@ startAutoSlide()
 
 
 
-
+// navbar
 document.addEventListener("DOMContentLoaded", function () {
     const openDrawer = document.getElementById("open-drawer");
     const navDrawer = document.getElementById("nav-drawer");

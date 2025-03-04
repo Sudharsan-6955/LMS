@@ -107,3 +107,25 @@
                 icon.classList.add('fa-chevron-down');
             }
         });
+
+        // navbar
+document.addEventListener("DOMContentLoaded", function () {
+    const openDrawer = document.getElementById("open-drawer");
+    const navDrawer = document.getElementById("nav-drawer");
+    const closeDrawer = document.getElementById("close-drawer");
+
+    openDrawer.addEventListener("click", function () {
+        navDrawer.classList.add("open"); // Slide in
+    });
+
+    closeDrawer.addEventListener("click", function () {
+        navDrawer.classList.remove("open"); // Slide out
+    });
+
+    // Optional: Click outside to close
+    document.addEventListener("click", function (event) {
+        if (!navDrawer.contains(event.target) && !openDrawer.contains(event.target)) {
+            navDrawer.classList.remove("open");
+        }
+    });
+});

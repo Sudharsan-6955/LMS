@@ -52,10 +52,123 @@
     .slide-out {
         animation: slideOut 0.5s forwards;
     }
+
+    #nav-drawer {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 65%;
+        /* Adjust width as needed */
+        height: 100%;
+        background-color: white;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        border-right: 1px solid #ddd;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        transition: left 0.3s ease-in-out;
+    }
+
+    #nav-drawer.open {
+        left: 0;
+    }
 </style>
 
 <body class=" font-[poppins]">
-    <div class="p-14  px-24 max-md:flex-wrap-reverse gap-4 p flex max-md:p-5 justify-start bg-[#7200FF]">
+    <!-- nav -->
+    <nav
+        class="navbar h-16 fixed top-0 left-0 w-full  flex justify-between items-center px-5 bg-white shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]  z-30">
+        <!-- Left Side: Logo -->
+        <a href="index.html">
+            <div class="logo-container flex items-center justify-center space-x-1 max-md:flex-col max-md:space-x-0 ">
+                <p class="brand-name font-bold text-xl max-md:text-sm text-[#7200FF]">Zubyte</p>
+                <p class="brand-sub font-bold text-xl max-md:text-sm">LMS</p>
+            </div>
+        </a>
+
+        <!-- Search Bar -->
+        <div
+            class="search-box flex items-center border border-gray-300 bg-gray-100  max-md:h-[2rem] max-md:mx-2 md:mx-2 rounded-lg px-4 py-2 max-md:flex-row-reverse max-w-[38rem] w-full">
+            <input type="search" placeholder="Search for courses and more"
+                class="search-input outline-none text-sm w-full bg-transparent placeholder-gray-500" />
+            <i class="fa-solid fa-magnifying-glass text-gray-500 text-lg cursor-pointer max-md:mx-2"></i>
+        </div>
+
+        <!-- Desktop Menu -->
+        <div class="menu hidden min-[1099px]:flex space-x-6 ">
+            <div class="menu-item flex items-center space-x-2">
+                <i class="fa-solid fa-book"></i>
+                <a href="Sec.html">Courses</a>
+            </div>
+            <div class="dropdown relative group inline-block">
+                <i class="fa-solid fa-question"></i>
+                <button class="dropdown-btn text-black px-2 py-2">Hover Me</button>
+                <div
+                    class="dropdown-menu  absolute hidden group-hover:block bg-white border rounded-md shadow-md w-40 mt-1">
+                    <a href="#" class="dropdown-item block px-4 py-2 hover:bg-gray-200">Item 1</a>
+                    <a href="#" class="dropdown-item block px-4 py-2 hover:bg-gray-200">Item 2</a>
+                    <a href="#" class="dropdown-item block px-4 py-2 hover:bg-gray-200">Item 3</a>
+                </div>
+            </div>
+            <div class="menu-item flex items-center space-x-2">
+                <i class="fa-regular fa-circle-user"></i>
+                <p>Account</p>
+            </div>
+            <div class="auth-button max-w-fit my-auto justify-items-center bg-[#7200FF] rounded-lg">
+                <p class="auth-text text-xs px-2 p-1.5 text-white">Login / Signup</p>
+            </div>
+        </div>
+
+        <!-- Hamburger Button (Mobile) -->
+        <button id="open-drawer" class="menu-icon min-[1099px]:hidden  text-xl">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="nav-drawer"
+            class="mobile-menu fixed top-0 left-[-100%] w-2/3 h-full bg-white shadow-md border-r p-5 flex flex-col space-y-5 transition-all duration-300">
+            <div class="drawer-header flex justify-between">
+                <div class="drawer-logo flex items-center space-x-1 max-md:flex-wrap">
+                    <p class="drawer-brand font-bold text-xl text-[#7200FF]">Zubyte</p>
+                    <p class="drawer-title font-bold text-xl">LMS</p>
+                </div>
+                <button id="close-drawer" class="drawer-close text-xl self-end">
+                    <i class="fa-solid fa-xmark text-xs"></i>
+                </button>
+            </div>
+            <a href="#" class="drawer-item flex items-center space-x-2">
+                <i class="fa-regular fa-user text-[#7200FF]"></i>
+                <p class="font-[poppins] text-sm">Login/Signup</p>
+            </a>
+            <a href="Sec.html" class="drawer-item flex items-center space-x-2">
+                <i class="fa-solid fa-book text-[#7200FF]"></i>
+                <p class="font-[poppins] text-sm">Courses</p>
+            </a>
+            <a href="#" class="drawer-item flex items-center space-x-2">
+                <i class="fa-solid fa-cart-shopping text-[#7200FF]"></i>
+                <p class="font-[poppins] text-sm">Your Cart</p>
+            </a>
+            <a href="#" class="drawer-item flex items-center space-x-2">
+                <i class="fa-solid fa-heart text-[#7200FF]"></i>
+                <p class="font-[poppins] text-sm">Your Whishlist</p>
+            </a>
+            <a href="#" class="drawer-item flex items-center space-x-2">
+                <i class="fa-regular fa-bell text-[#7200FF]"></i>
+                <p>Notification</p>
+            </a>
+            <a href="#" class="drawer-item flex items-center space-x-2">
+                <i class="fa-solid fa-gear text-[#7200FF]"></i>
+                <p class="font-[poppins] text-sm">Setting</p>
+            </a>
+            <a href="#" class="drawer-item flex items-center space-x-2">
+                <i class="fa-solid fa-envelope text-[#7200FF]"></i>
+                <p>Cantactus</p>
+            </a>
+
+        </div>
+    </nav>
+    <div class="p-14 mt-[65px] max-md:mt-[56px] px-24 max-md:flex-wrap-reverse gap-4 p flex max-md:p-5 justify-start bg-[#7200FF]">
         <div class="max-md:px-1">
             <p class="text-2xl font-semibold text-white max-sm:text-xl">Introduction of Frontend-Development </p>
             <p class="text-white my-2">Online Course Program</p>
