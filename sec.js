@@ -161,21 +161,38 @@ leftArrow.addEventListener('click', () => {
 
 
 // chartts
-document.getElementById('seeMoreBtn').addEventListener('click', function () {
-    const content = document.getElementById('extraContent');
+// document.getElementById('seeMoreBtn').addEventListener('click', function () {
+//     const content = document.getElementById('extraContent');
+//     if (content.classList.contains('hidden')) {
+//         content.classList.remove('hidden');
+//         this.textContent = 'See Less';
+//         this.style.fontWeight = 'Semi Bold';
+//         // Access the element by its ID
+//         var element = document.getElementById('seeMoreBtn');
+//         element.style.fontWeight = '600';
+//     } else {
+//         content.classList.add('hidden');
+//         this.textContent = 'See More';
+//         this.style.fontWeight = 'Semi Bold'; // Revert button text to normal
+//         var element = document.getElementById('seeMoreBtn');
+//         element.style.fontWeight = '600';
+//     }
+// });
+document.getElementById('seeMore').addEventListener('click', function () {
+    const content = document.getElementById('extra');
+    const buttonText = this.querySelector('span');
+    const icon = this.querySelector('i');
+
     if (content.classList.contains('hidden')) {
         content.classList.remove('hidden');
-        this.textContent = 'See Less';
-        this.style.fontWeight = 'Semi Bold';
-        // Access the element by its ID
-        var element = document.getElementById('seeMoreBtn');
-        element.style.fontWeight = '600';
+        buttonText.textContent = 'See Less';
+        icon.classList.remove('fa-chevron-down');
+        icon.classList.add('fa-chevron-up');
     } else {
         content.classList.add('hidden');
-        this.textContent = 'See More';
-        this.style.fontWeight = 'Semi Bold'; // Revert button text to normal
-        var element = document.getElementById('seeMoreBtn');
-        element.style.fontWeight = '600';
+        buttonText.textContent = 'See More';
+        icon.classList.remove('fa-chevron-up');
+        icon.classList.add('fa-chevron-down');
     }
 });
 
@@ -201,3 +218,5 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+
+

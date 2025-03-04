@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course details</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="index.css">
+    <script defer src="four.js"></script>
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Syne:wght@400..800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body class="font-[poppins] bg-[#F1F3F6]">
+    <!-- nav -->
+    <nav
+        class="navbar h-16 fixed top-0 left-0 w-full  flex justify-between items-center px-5 bg-white shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]  z-30">
+        <!-- Left Side: Logo -->
+        <a href="index.html">
+            <div class="logo-container flex items-center justify-center space-x-1 max-md:flex-col max-md:space-x-0 ">
+                <p class="brand-name font-bold text-xl max-md:text-sm text-[#7200FF]">Zubyte</p>
+                <p class="brand-sub font-bold text-xl max-md:text-sm">LMS</p>
+            </div>
+        </a>
+
+        <!-- Search Bar -->
+        <div
+            class="search-box flex items-center border border-gray-300 bg-gray-100  max-md:h-[2rem] max-md:mx-2 md:mx-2 rounded-lg px-4 py-2 max-md:flex-row-reverse max-w-[38rem] w-full">
+            <input type="search" placeholder="Search for courses and more"
+                class="search-input outline-none text-sm w-full bg-transparent placeholder-gray-500" />
+            <i class="fa-solid fa-magnifying-glass text-gray-500 text-lg cursor-pointer max-md:mx-2"></i>
+        </div>
+
+        <!-- Desktop Menu -->
+        <div class="menu hidden min-[1099px]:flex space-x-6 ">
+            <div class="menu-item flex items-center space-x-2">
+                <i class="fa-solid fa-book"></i>
+                <a href="Sec.html">Courses</a>
+            </div>
+            <div class="dropdown relative group inline-block">
+                <i class="fa-solid fa-question"></i>
+                <button class="dropdown-btn text-black px-2 py-2">Hover Me</button>
+                <div
+                    class="dropdown-menu  absolute hidden group-hover:block bg-white border rounded-md shadow-md w-40 mt-1">
+                    <a href="#" class="dropdown-item block px-4 py-2 hover:bg-gray-200">Item 1</a>
+                    <a href="#" class="dropdown-item block px-4 py-2 hover:bg-gray-200">Item 2</a>
+                    <a href="#" class="dropdown-item block px-4 py-2 hover:bg-gray-200">Item 3</a>
+                </div>
+            </div>
+            <div class="menu-item flex items-center space-x-2">
+                <i class="fa-regular fa-circle-user"></i>
+                <p>Account</p>
+            </div>
+            <div class="auth-button max-w-fit my-auto justify-items-center bg-[#7200FF] rounded-lg">
+                <p class="auth-text text-xs px-2 p-1.5 text-white">Login / Signup</p>
+            </div>
+        </div>
+
+        <!-- Hamburger Button (Mobile) -->
+        <button id="open-drawer" class="menu-icon min-[1099px]:hidden  text-xl">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="nav-drawer"
+            class="mobile-menu fixed top-0 left-[-100%] w-2/3 h-full bg-white shadow-md border-r p-5 flex flex-col space-y-5 transition-all duration-300">
+            <div class="drawer-header flex justify-between">
+                <div class="drawer-logo flex items-center space-x-1 max-md:flex-wrap">
+                    <p class="drawer-brand font-bold text-xl text-[#7200FF]">Zubyte</p>
+                    <p class="drawer-title font-bold text-xl">LMS</p>
+                </div>
+                <button id="close-drawer" class="drawer-close text-xl self-end">
+                    <i class="fa-solid fa-xmark text-xs"></i>
+                </button>
+            </div>
+            <a href="#" class="drawer-item flex items-center space-x-2">
+                <i class="fa-regular fa-user text-[#7200FF]"></i>
+                <p class="font-[poppins] text-sm">Login/Signup</p>
+            </a>
+            <a href="Sec.html" class="drawer-item flex items-center space-x-2">
+                <i class="fa-solid fa-book text-[#7200FF]"></i>
+                <p class="font-[poppins] text-sm">Courses</p>
+            </a>
+            <a href="#" class="drawer-item flex items-center space-x-2">
+                <i class="fa-solid fa-cart-shopping text-[#7200FF]"></i>
+                <p class="font-[poppins] text-sm">Your Cart</p>
+            </a>
+            <a href="#" class="drawer-item flex items-center space-x-2">
+                <i class="fa-solid fa-heart text-[#7200FF]"></i>
+                <p class="font-[poppins] text-sm">Your Whishlist</p>
+            </a>
+            <a href="#" class="drawer-item flex items-center space-x-2">
+                <i class="fa-regular fa-bell text-[#7200FF]"></i>
+                <p>Notification</p>
+            </a>
+            <a href="#" class="drawer-item flex items-center space-x-2">
+                <i class="fa-solid fa-gear text-[#7200FF]"></i>
+                <p class="font-[poppins] text-sm">Setting</p>
+            </a>
+            <a href="#" class="drawer-item flex items-center space-x-2">
+                <i class="fa-solid fa-envelope text-[#7200FF]"></i>
+                <p>Cantactus</p>
+            </a>
+
+        </div>
+    </nav>
+    <!-- first -->
+    <div
+        class="bg-[#7200FF] p-10 max-md:p-5 px-20 max-md:h-[20rem] mt-[65px] max-md:mt-[56px]  mb-6 h-[32rem] flex justify-center">
+        <img class=" w-full" src="./assets/Rectangle 32.png" alt="">
+    </div>
+    <!-- second -->
+    <div class="container mx-auto p-8 px-16 max-md:p-2 max-md:pl-3">
+        <!-- Navigation Links -->
+        <div class="flex gap-8">
+            <button id="overviewBtn"
+                class="underline cursor-pointer underline-offset-8 focus-within:decoration-4 text-[#7200FF]">Overview</button>
+            <button id="topicsBtn"
+                class="underline cursor-pointer underline-offset-8 focus-within:decoration-4 text-[#7200FF]">Topics</button>
+            <button id="notesBtn"
+                class="underline cursor-pointer underline-offset-8 focus-within:decoration-4 text-[#7200FF]">Notes</button>
+        </div>
+        <hr class="bg-[#7200FF] h-0.5 rounded-3xl mt-1">
+
+        <!-- Sections -->
+        <div id="overview" class="section text-[#7200FF] my-7">
+            <p class="text-2xl my-2 font-bold">Introduction of Frontend-Development</p>
+            <p class="text-lg ">Online Course Program</p>
+            <div class="flex justify-start gap-5 mx-1 my-5">
+                <div class="flex gap-0.5">
+                    <i class="fa-solid fa-star text-amber-300"></i>
+                    <i class="fa-solid fa-star text-amber-300"></i>
+                    <i class="fa-solid fa-star text-amber-300 "></i>
+                    <i class="fa-regular fa-star text-gray-300"></i>
+                    <i class="fa-regular fa-star text-gray-300"></i>
+                </div>
+                <p class=" font-[poppins] text-sm">(1500)</p>
+            </div>
+            <p class="text-sm ">Lorem ipsum dolor sit amet. Nam provident provident sit autem perferendis et error.Lorem
+                ipsum dolor sit amet. Nam provident provident sit autem perferendis et errt .
+            </p>
+            <p class="text-2xl my-4 font-bold">Description</p>
+            <p class="text-sm my-1">
+                Lorem ipsum dolor sit amet. Nam provident provident sit autem perferendis et error.Lorem ipsum dolor sit
+                amet. Namue provident provident sit autem perferendis et errt .
+            </p>
+
+            <p class="text-sm my-4">
+                met. Nam provident provident sit autem perferendis et errt .Lorem ipsum dolor sit amet. Nam provident
+                provident sitaut autem perferendis et error.Lorem ipsum dolor sit amet. Na
+            </p>
+            <p class="text-sm my-2">
+                provident provident sit autem perferendis et errt .Lorem ipsum dolor sit amet. Nam provident provident
+                sit autemerrrrrty perferendis et error.Lorem ipsum dolor sit amet. Nam provident provident sit autem
+                perferendis et errt .Lorem ipsum dolor sit amet. Nam provident provident sit autem perferendis et
+                error.Lorem ipsum dolor sit amet. Nam provident provident sit
+            </p>
+            <div>
+
+                <div class="container ">
+                    <!-- Extra Content -->
+                    <p id="extraContent" class="hidden transition-opacity duration-300">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam assumenda ipsum laudantium minima
+                        aut dolor beatae similique ullam? Ducimus, repellendus.
+                    </p>
+                    <!-- Toggle Button -->
+                    <button id="seeMoreBtn" class="mt-4 cursor-pointer mx-auto text-lg font-semibold flex items-center">
+                        <span>See More</span>
+                        <i class="fas fa-chevron-down ml-1 text-sm transition-transform duration-300"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="topics" class="section hidden text-[#7200FF] my-7">
+            <ol class="list-decimal ">
+                <div class=" flex">
+                    <i class="fa-solid fa-display px-4 mt-2 text-xl "></i>
+                    <li class="text-lg font-semibold ml-5">Introduction to html</li>
+                    <i class="fa-solid fa-angle-down text-[#7200FF] mt-2 px-2"></i>
+                </div>
+                <p class="text-xs font-[500] px-14 mb-10 my-2">Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Cum,
+                    voluptatem!</p>
+                <div class=" flex">
+                    <i class="fa-solid fa-display px-4 mt-2 text-xl "></i>
+                    <li class="text-lg font-semibold ml-5">Html tags</li>
+                    <i class="fa-solid fa-angle-down text-[#7200FF] mt-2 px-2"></i>
+                </div>
+                <p class="text-xs font-[500] px-14 mb-10 my-2">Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Cum,
+                    voluptatem!</p>
+                <div class=" flex">
+                    <i class="fa-solid fa-display px-4 mt-2 text-xl "></i>
+                    <li class="text-lg font-semibold ml-5">Link a External Css</li>
+                    <i class="fa-solid fa-angle-down text-[#7200FF] mt-2 px-2"></i>
+                </div>
+                <p class="text-xs font-[500] px-14 mb-10 my-2">Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Cum,
+                    voluptatem!</p>
+                <div class=" flex">
+                    <i class="fa-solid fa-display px-4 mt-2 text-xl "></i>
+                    <li class="text-lg font-semibold ml-5">Adding a elements</li>
+                    <i class="fa-solid fa-angle-down text-[#7200FF] mt-2 px-2"></i>
+                </div>
+                <p class="text-xs font-[500] px-14 mb-10 my-2">Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Cum,
+                    voluptatem!</p>
+                <div class=" flex">
+                    <i class="fa-solid fa-display px-4 mt-2 text-xl "></i>
+                    <li class="text-lg font-semibold ml-5">Give a padding and margins & others</li>
+                    <i class="fa-solid fa-angle-down text-[#7200FF] mt-2 px-2"></i>
+                </div>
+                <p class="text-xs font-[500] px-14 mb-10 my-2">Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Cum,
+                    voluptatem!</p>
+                <div class=" flex">
+                    <i class="fa-solid fa-display px-4 mt-2 text-xl "></i>
+                    <li class="text-lg font-semibold ml-5">Creat a first Webpage</li>
+                    <i class="fa-solid fa-angle-down text-[#7200FF] mt-2 px-2"></i>
+                </div>
+                <p class="text-xs font-[500] px-14 mb-10 my-2">Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Cum,
+                    voluptatem!</p>
+            </ol>
+            <div class="container1">
+                <!-- Extra Content -->
+                <div id="extraContent1" class="hidden transition-opacity duration-300">
+                    <ol class="list-decimal ">
+                        <div class=" flex">
+                            <i class="fa-solid fa-display px-4 mt-2 text-xl "></i>
+                            <li class="text-lg font-semibold ml-5">Example Webpage</li>
+                            <i class="fa-solid fa-angle-down text-[#7200FF] mt-2 px-2"></i>
+                        </div>
+                        <p class="text-xs font-[500] px-14 mb-10 my-2">Lorem ipsum dolor, sit amet consectetur
+                            adipisicing elit.
+                            Cum,
+                            voluptatem!</p>
+                        <div class=" flex">
+                            <i class="fa-solid fa-display px-4 mt-2 text-xl "></i>
+                            <li class="text-lg font-semibold ml-5">Second Webpage</li>
+                            <i class="fa-solid fa-angle-down text-[#7200FF] mt-2 px-2"></i>
+                        </div>
+                        <p class="text-xs font-[500] px-14 mb-10 my-2">Lorem ipsum dolor, sit amet consectetur
+                            adipisicing elit.
+                            Cum,
+                            voluptatem!</p>
+                    </ol>
+
+                </div>
+                <!-- Toggle Button -->
+                <button id="seeMoreBtn1" class="mt-4 cursor-pointer mx-auto text-lg font-semibold flex items-center">
+                    <span>See More</span>
+                    <i class="fas fa-chevron-down ml-1 text-sm transition-transform duration-300"></i>
+                </button>
+            </div>
+
+
+        </div>
+        <div id="notes" class="section hidden my-7">
+
+            <div class="flex min-h-[28rem] bg-gray-100">
+                <div class="w-full bg-white shadow-xl p-5 shado rounded-lg">
+                    <div class="flex justify-between items-center border-b pb-2 mb-2">
+                        <div class="flex space-x-4 text-purple-600">
+                            <select id="styleSelect" class="font-bold cursor-pointer border-none outline-none">
+                                <option value="">Styles</option>
+                                <option value="# Heading">Heading</option>
+                                <option value="## Subheading">Subheading</option>
+                                <option value="">Paragraph</option>
+                            </select>
+                            <button id="boldBtn" class="font-bold">B</button>
+                            <button id="italicBtn" class="italic">I</button>
+                            <button id="codeBtn">&lt;&gt;</button>
+                            <button id="listBtn">&#8226;&#8226;&#8226;</button>
+                        </div>
+                        <span id="charCount" class="text-purple-600 font-bold">0</span>
+                    </div>
+                    <textarea id="noteInput" class="w-full h-64 border p-2 rounded focus:outline-purple-600"
+                        placeholder="Start typing..."></textarea>
+                    <div class="flex justify-end gap-4 mt-4">
+                        <button id="prevNote"
+                            class="border border-purple-600 max-md:text-xs max-md:px-2 text-purple-600 px-4 py-2 rounded-md hover:bg-purple-100">Previous
+                            Note</button>
+                        <button id="saveNote"
+                            class="bg-[#7200FF] max-md:text-xs max-md:px-2 text-white font-bold  px-6  py-2 rounded-md hover:bg-purple-700">Save
+                            Note</button>
+                    </div>
+                    <div class="flex justify-end mt-4 my-2">
+                        <button id="saveNote"
+                            class="bg-[#7200FF] justify-items-end max-md:text-xs max-md:p-2 text-white font-bold px-4 py-4 text-xl rounded-full hover:bg-purple-700">
+                            <i class="fa-solid fa-reply"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- sec div -->
+    <div class="my-1 p-14 px-16 max-md:p-2 ">
+        <div class="bg-[#7200FF] p-10  rounded-md">
+            <div class="p-10 max-md:p-2 justify-items-center">
+                <p class="text-white font-semibold max-md:text-xl text-3xl my-1">Syllabus Overview</p>
+                <p class="text-white max-md:hidden my-1">Lorem Ipsum amid Lorem ipsum dolor sit amet, consectetur
+                    adipiscing elit, sed
+                    do eiusmodLorem </p>
+            </div>
+            <div class="flex mx-auto flex-wrap my-4 max-md:my-2">
+                <div
+                    class="dropdown-btn relative p-1 mx-auto max-md:my-3  max-md:mx-auto group inline-block bg-white rounded-lg">
+                    <button class=" font-semibold  text-lg px-4 py-2 text-[#7200FF]"> Module 1 <span
+                            class="pl-60 max-md:pl-20 ropdown-btn"><i
+                                class="fa-solid fa-circle-chevron-down"></i></span> </button>
+                    <div
+                        class="dropdown-menu z-10 absolute hidden group-hover:block bg-white border rounded-md shadow-md w-80 mt-1">
+                        <a href="#" class="dropdown-item block px-4 py-2 hover:bg-gray-200">Item 1</a>
+                        <a href="#" class="dropdown-item block px-4 py-2 hover:bg-gray-200">Item 2</a>
+                        <a href="#" class="dropdown-item block px-4 py-2 hover:bg-gray-200">Item 3</a>
+                    </div>
+                </div>
+                <div class="dropdown-btn relative p-1 mx-auto  group inline-block bg-white rounded-lg">
+                    <button class=" font-semibold  text-lg px-4 py-2 text-[#7200FF]"> Module 1 <span
+                            class="pl-60 max-md:pl-20 ropdown-btn"><i
+                                class="fa-solid fa-circle-chevron-down"></i></span> </button>
+                    <div
+                        class="dropdown-menu z-10 absolute hidden group-hover:block bg-white border rounded-md shadow-md w-80 mt-1">
+                        <a href="#" class="dropdown-item block px-4 py-2 hover:bg-gray-200">Item 1</a>
+                        <a href="#" class="dropdown-item block px-4 py-2 hover:bg-gray-200">Item 2</a>
+                        <a href="#" class="dropdown-item block px-4 py-2 hover:bg-gray-200">Item 3</a>
+                    </div>
+                </div>
+            </div>
+            <div class="flex mx-auto flex-wrap my-4 max-md:my-2">
+                <div
+                    class="dropdown-btn relative p-1 mx-auto max-md:my-3  max-md:mx-auto group inline-block bg-white rounded-lg">
+                    <button class=" font-semibold  text-lg px-4 py-2 text-[#7200FF]"> Module 1 <span
+                            class="pl-60 max-md:pl-20 ropdown-btn"><i
+                                class="fa-solid fa-circle-chevron-down"></i></span> </button>
+                    <div
+                        class="dropdown-menu z-10 absolute hidden group-hover:block bg-white border rounded-md shadow-md w-80 mt-1">
+                        <a href="#" class="dropdown-item block px-4 py-2 hover:bg-gray-200">Item 1</a>
+                        <a href="#" class="dropdown-item block px-4 py-2 hover:bg-gray-200">Item 2</a>
+                        <a href="#" class="dropdown-item block px-4 py-2 hover:bg-gray-200">Item 3</a>
+                    </div>
+                </div>
+                <div class="dropdown-btn relative p-1 mx-auto  group inline-block bg-white rounded-lg">
+                    <button class=" font-semibold  text-lg px-4 py-2 text-[#7200FF]"> Module 1 <span
+                            class="pl-60 max-md:pl-20 ropdown-btn"><i
+                                class="fa-solid fa-circle-chevron-down"></i></span> </button>
+                    <div
+                        class="dropdown-menu z-10 absolute hidden group-hover:block bg-white border rounded-md shadow-md w-80 mt-1">
+                        <a href="#" class="dropdown-item block px-4 py-2 hover:bg-gray-200">Item 1</a>
+                        <a href="#" class="dropdown-item block px-4 py-2 hover:bg-gray-200">Item 2</a>
+                        <a href="#" class="dropdown-item block px-4 py-2 hover:bg-gray-200">Item 3</a>
+                    </div>
+                </div>
+            </div>
+            <div class="flex mx-auto flex-wrap my-4 max-md:my-2 ">
+                <div
+                    class="dropdown-btn relative p-1 mx-auto max-md:my-3  max-md:mx-auto group inline-block bg-white rounded-lg">
+                    <button class=" font-semibold  text-lg px-4 py-2 text-[#7200FF]"> Module 1 <span
+                            class="pl-60 max-md:pl-20 "><i class="fa-solid fa-circle-chevron-down"></i></span> </button>
+                    <div
+                        class="dropdown-menu z-10 absolute hidden group-hover:block bg-white border rounded-md shadow-md w-80 mt-1">
+                        <a href="#" class="dropdown-item block px-4 py-2 hover:bg-gray-200">Item 1</a>
+                        <a href="#" class="dropdown-item block px-4 py-2 hover:bg-gray-200">Item 2</a>
+                        <a href="#" class="dropdown-item block px-4 py-2 hover:bg-gray-200">Item 3</a>
+                    </div>
+                </div>
+                <div class="dropdown-btn relative p-1 mx-auto  group inline-block bg-white rounded-lg">
+                    <button class=" font-semibold  text-lg px-4 py-2 text-[#7200FF]"> Module 1 <span
+                            class="pl-60 max-md:pl-20 ropdown-btn"><i
+                                class="fa-solid fa-circle-chevron-down"></i></span> </button>
+                    <div
+                        class="dropdown-menu z-10 absolute hidden group-hover:block bg-white border rounded-md shadow-md w-80 mt-1">
+                        <a href="#" class="dropdown-item block px-4 py-2 hover:bg-gray-200">Item 1</a>
+                        <a href="#" class="dropdown-item block px-4 py-2 hover:bg-gray-200">Item 2</a>
+                        <a href="#" class="dropdown-item block px-4 py-2 hover:bg-gray-200">Item 3</a>
+                    </div>
+                </div>
+            </div>
+            <div class="flex mx-auto flex-wrap  my-6 max-md:my-4">
+                <div
+                    class="dropdown-btn relative p-1 mx-auto max-md:my-3  max-md:mx-auto group inline-block bg-white rounded-lg">
+                    <button class=" font-semibold  text-lg px-4 py-2 text-[#7200FF]"> Download Module <span
+                            class="pl-10 max-md:pl-5 ropdown-btn"><i class="fa-solid fa-download"></i></span> </button>
+                    <div
+                        class="dropdown-menu z-20 absolute hidden group-hover:block bg-white border rounded-md shadow-md w-80 mt-1">
+                        <a href="#" class="dropdown-item block px-4 py-2 hover:bg-gray-200">Item 1</a>
+                        <a href="#" class="dropdown-item block px-4 py-2 hover:bg-gray-200">Item 2</a>
+                        <a href="#" class="dropdown-item block px-4 py-2 hover:bg-gray-200">Item 3</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class=" p-10 px-18  flex justify-around max-md:flex-wrap max-md:p-4 max-md:gap-5">
+        <div class="paragraph pt-10 max-md:px-2 w-[50%] max-md:w-[100%]">
+            <p class="text-2xl max-md:text-sm font-semibold">Requi<span class="text-[#7200FF]">rements</span>/
+                Description</p>
+            <ul>
+                <li class="flex my-5 ">
+                    <i class="fa-solid fa-circle-check  text-[#7200FF] pt-2 text-xl "></i>
+                    <p class="text-lg max-md:text-sm max-md:px-2 px-5">Lorem ipsum dolor sit amet,Lorem ipsum
+                        dolor
+                        sit ame</p>
+                </li>
+                <li class="flex my-5 ">
+                    <i class="fa-solid fa-circle-check  text-[#7200FF] pt-2 text-xl "></i>
+                    <p class="text-lg max-md:text-sm max-md:px-2 px-5">Lorem ipsum dolor sit amet,Lorem ipsum
+                        dolor
+                        sit ame</p>
+                </li>
+                <li class="flex my-5 ">
+                    <i class="fa-solid fa-circle-check  text-[#7200FF] pt-2 text-xl "></i>
+                    <p class="text-lg max-md:text-sm max-md:px-2 px-5">Lorem ipsum dolor sit amet,Lorem ipsum
+                        dolor
+                        sit ame</p>
+                </li>
+                <li class="flex my-5 ">
+                    <i class="fa-solid fa-circle-check  text-[#7200FF] pt-2 text-xl "></i>
+                    <p class="text-lg max-md:text-sm max-md:px-2 px-5">Lorem ipsum dolor sit amet,Lorem ipsum
+                        dolor
+                        sit ame</p>
+                </li>
+            </ul>
+        </div>
+        <div class="paragraph border-2 justify-items-start border-[#7200FF]  rounded-md w-fit max-md:w-[100%]">
+            <p class="text-2xl font-semibold py-5 px-5"><span class="text-[#7200FF] ">"</span>R<span
+                    class="text-[#7200FF]">ating </span>Section
+            </p>
+            <div class="flex gap-8 mx-5 max-md:flex-wrap max-lg:flex-wrap max-md:justify-start">
+                <div class="w-60 max-md:w-full">
+                    <div class="flex my-5">
+                        <img class="w-10 h-10 rounded-full"
+                            src="./assets/Serious Young Boy with Glasses Cartoon Illustration.jpg" alt="">
+                        <div class="justify-items-center">
+                            <p class="text-xs px-2 pt-1">Harry Potter</p>
+                            <p class="text-xs px-2">Frontend-Developer</p>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex gap-2 px-10">
+                            <i class="fa-solid fa-star text-amber-300"></i>
+                            <i class="fa-solid fa-star text-amber-300"></i>
+                            <i class="fa-solid fa-star text-amber-300 "></i>
+                            <i class="fa-regular fa-star text-gray-300"></i>
+                            <i class="fa-regular fa-star text-gray-300"></i>
+                        </div>
+                        <div class="my-2">
+                            <p class="text-xs">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                Suscipit,
+                                aliquid!</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-60 max-md:w-full">
+                    <div class="flex my-5">
+                        <img class="w-10 h-10 rounded-full"
+                            src="./assets/Serious Young Boy with Glasses Cartoon Illustration.jpg" alt="">
+                        <div class="justify-items-center">
+                            <p class="text-xs px-2 pt-1">Harry Potter</p>
+                            <p class="text-xs px-2">Frontend-Developer</p>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex gap-2 px-10">
+                            <i class="fa-solid fa-star text-amber-300"></i>
+                            <i class="fa-solid fa-star text-amber-300"></i>
+                            <i class="fa-solid fa-star text-amber-300 "></i>
+                            <i class="fa-regular fa-star text-gray-300"></i>
+                            <i class="fa-regular fa-star text-gray-300"></i>
+                        </div>
+                        <div class="my-2">
+                            <p class="text-xs">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                Suscipit,
+                                aliquid!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex gap-8 mx-5 my-3 max-md:flex-wrap max-md:justify-start">
+                <div class="w-60 max-md:w-full">
+                    <div class="flex my-5">
+                        <img class="w-10 h-10 rounded-full"
+                            src="./assets/Serious Young Boy with Glasses Cartoon Illustration.jpg" alt="">
+                        <div class="justify-items-center">
+                            <p class="text-xs px-2 pt-1">Harry Potter</p>
+                            <p class="text-xs px-2">Frontend-Developer</p>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex gap-2 px-10">
+                            <i class="fa-solid fa-star text-amber-300"></i>
+                            <i class="fa-solid fa-star text-amber-300"></i>
+                            <i class="fa-solid fa-star text-amber-300 "></i>
+                            <i class="fa-regular fa-star text-gray-300"></i>
+                            <i class="fa-regular fa-star text-gray-300"></i>
+                        </div>
+                        <div class="my-2">
+                            <p class="text-xs">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                Suscipit,
+                                aliquid!</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-60 max-md:w-full">
+                    <div class="flex my-5">
+                        <img class="w-10 h-10 rounded-full"
+                            src="./assets/Serious Young Boy with Glasses Cartoon Illustration.jpg" alt="">
+                        <div class="justify-items-center">
+                            <p class="text-xs px-2 pt-1">Harry Potter</p>
+                            <p class="text-xs px-2">Frontend-Developer</p>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex gap-2 px-10">
+                            <i class="fa-solid fa-star text-amber-300"></i>
+                            <i class="fa-solid fa-star text-amber-300"></i>
+                            <i class="fa-solid fa-star text-amber-300 "></i>
+                            <i class="fa-regular fa-star text-gray-300"></i>
+                            <i class="fa-regular fa-star text-gray-300"></i>
+                        </div>
+                        <div class="my-2">
+                            <p class="text-xs">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                Suscipit,
+                                aliquid!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <!-- thirdsec -->
+    <div class=" p-28  flex gap-10 lg:gap-16 max-md:flex-wrap max-md:p-4 max-md:gap-5">
+        <div class="w-[50%] max-md:w-[100%]">
+            <div class="p-1 ">
+                <p class="text-[#7200FF] text-3xl font-bold">Fo<span class="text-black">r</span>m<span
+                        class="text-black">s</span></p>
+                <p class="text-sm font-">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis, tenetur vitae? Repellendus,
+
+                </p>
+                <ul>
+                    <li class="flex my-5 ">
+                        <i class="fa-solid fa-circle-check  text-[#7200FF] pt-2 text-xl "></i>
+                        <p class="text-lg max-md:text-sm max-md:px-2 px-5">Lorem ipsum dolor sit amet,Lorem ipsum
+                            dolor
+                            sit ame</p>
+                    </li>
+                    <li class="flex my-5 ">
+                        <i class="fa-solid fa-circle-check  text-[#7200FF] pt-2 text-xl "></i>
+                        <p class="text-lg max-md:text-sm max-md:px-2 px-5">Lorem ipsum dolor sit amet,Lorem ipsum
+                            dolor
+                            sit ame</p>
+                    </li>
+                    <li class="flex my-5 ">
+                        <i class="fa-solid fa-circle-check  text-[#7200FF] pt-2 text-xl "></i>
+                        <p class="text-lg max-md:text-sm max-md:px-2 px-5">Lorem ipsum dolor sit amet,Lorem ipsum
+                            dolor
+                            sit ame</p>
+                    </li>
+                    <li class="flex my-5 ">
+                        <i class="fa-solid fa-circle-check  text-[#7200FF] pt-2 text-xl "></i>
+                        <p class="text-lg max-md:text-sm max-md:px-2 px-5">Lorem ipsum dolor sit amet,Lorem ipsum
+                            dolor
+                            sit ame</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-md:mt-10 w-[50%]  max-md:w-[100%]">
+
+            <form class="max-w-md " id="hii">
+                <div class="grid md:grid-cols-2 md:gap-6">
+
+                    <div class="relative mb-5">
+                        <input type="text" id="Firstname"
+                            class="block  px-3 pb-4 pt-4 w-full cursor-pointer text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                            placeholder=" " />
+                        <label for="Firstname"
+                            class="absolute text-md  font-[500] cursor-pointer text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-[#F1F3F6] dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600
+                             peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-4">
+                            Firstname <span class="text-[#7200FF]">*</span>
+                        </label>
+                    </div>
+
+                    <div class="relative mb-5">
+                        <input type="text" id="Secondname"
+                            class="block  px-3 pb-4 pt-4 w-full cursor-pointer text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                            placeholder=" " />
+                        <label for="Secondname"
+                            class="absolute text-md cursor-pointer font-[500] text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-[#F1F3F6] dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600
+                             peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-4">
+                            Secondname <span class="text-[#7200FF]">*</span>
+                        </label>
+                    </div>
+
+                </div>
+
+                <div class="relative mb-5">
+                    <input type="text" id="Email"
+                        class="block  px-3 pb-4 pt-4 w-full cursor-pointer text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                        placeholder=" " />
+                    <label for="Email"
+                        class="absolute text-md cursor-pointer font-[500] text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-[#F1F3F6] dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600
+                         peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-4">
+                        Work email / Your Email<span class="text-[#7200FF]">*</span>
+                    </label>
+                </div>
+                <div class="relative mb-5">
+                    <input type="text" id="Ph_no"
+                        class="block  px-3 pb-4 pt-4 w-full cursor-pointer text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                        placeholder=" " />
+                    <label for="Ph_no"
+                        class="absolute text-md cursor-pointer font-[500] text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-[#F1F3F6] dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600
+                         peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-4">
+                        Phone Number<span class="text-[#7200FF]">*</span>
+                    </label>
+                </div>
+                <div class="relative mb-5">
+                    <input type="text" id="title"
+                        class="block  px-3 pb-4 pt-4 w-full cursor-pointer text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                        placeholder=" " />
+                    <label for="title"
+                        class="absolute text-md cursor-pointer font-[500] text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-[#F1F3F6] dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600
+                         peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-4">
+                        Title of the Course<span class="text-[#7200FF]">*</span>
+                    </label>
+                </div>
+                <div class="relative mb-5">
+                    <input type="text" id="thoughts"
+                        class="block p-10 px-2 cursor-pointer w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-auto dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                        placeholder=" " />
+                    <label for="thoughts"
+                        class="absolute text-md cursor-pointer font-[500] text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-[#F1F3F6] dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600
+                         peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75  ease-in-out peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-4">
+                        Your Thoughts / Your Feedback<span class="text-[#7200FF]">*</span>
+                    </label>
+
+                </div>
+                <div class="flex justify-end">
+                    <div
+                        class="bg-[#7200FF] px-10 hover:bg-white text-white hover:border cursor-pointer hover:border-[#7200FF] hover:text-[#7200FF] p-2 rounded-md">
+                        <input class="cursor-pointer " type="submit" value="Submit">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- footer -->
+    <div class="bg-[#7200FF]">
+        <div class="lg:hidden block px-16 pt-10 max-md:px-2">
+            <div class=" flex justify-around max-md:gap-1">
+                <div class="">
+                    <a href="#">
+                        <img class="" src="./assets/logo lms.svg" alt="">
+                    </a>
+                </div>
+                <div class="text-white">
+                    <a href="#">
+                        <p class="font-[poppins]">Visit us<i class="fa-solid fa-up-right-from-square mx-2"></i></p>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+        <div class="px-16 pt-10 max-md:px-5">
+            <p class="text-md font-bold text-white ">Explore & learn a top skills and certifications</p>
+        </div>
+        <div class="flex justify-around max-md:flex-wrap mx-5 max-sm:flex-col md:flex-wrap pt-5 ">
+            <div class="flex gap-60 max-md:gap-5">
+                <div class="leading list-none text-start">
+                    <li class="text-white  text-sm leading-12 font-[poppins] font-semibold">Certificate issued by </li>
+                    <a href="#">
+                        <li class="text-white  text-sm leading-12 font-[poppins]">Udemy</li>
+                    </a>
+                    <a href="#">
+                        <li class="text-white  text-sm leading-12 font-[poppins]">Udemy</li>
+                    </a>
+                    <a href="#">
+                        <li class="text-white  text-sm leading-12 font-[poppins]">Udemy</li>
+                    </a>
+                </div>
+                <div class="leading list-none ">
+                    <li class="text-white  text-sm leading-12 font-[poppins] font-semibold">Front-end Development</li>
+                    <a href="#">
+                        <li class="text-white  text-sm leading-12 font-[poppins]">Html Basics</li>
+                    </a>
+                    <a href="#">
+                        <li class="text-white  text-sm leading-12 font-[poppins]">Css & frameworks</li>
+                    </a>
+                    <a href="#">
+                        <li class="text-white  text-sm leading-12 font-[poppins]">Javascript</li>
+                    </a>
+                </div>
+            </div>
+            <div class="leading list-none ">
+                <li class="text-white  text-sm leading-12 font-[poppins] font-semibold">Back-end Development</li>
+                <a href="#">
+                    <li class="text-white  text-sm leading-12 font-[poppins]">Html Basics</li>
+                </a>
+                <a href="#">
+                    <li class="text-white  text-sm leading-12 font-[poppins]">Css & frameworks</li>
+                </a>
+                <a href="#">
+                    <li class="text-white  text-sm leading-12 font-[poppins]">Javascript</li>
+                </a>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="bg-[#5B03C8] ">
+
+        <div class="flex justify-around max-md:flex-wrap mx-5 max-sm:flex-col md:flex-wrap ">
+            <div class="flex gap-60 max-md:gap-5">
+                <div class="leading list-none text-start">
+                    <li class="text-white  text-sm leading-12 font-[poppins] font-semibold">Certificate issued by </li>
+                    <a href="#">
+                        <li class="text-white  text-sm leading-12 font-[poppins]">Udemy</li>
+                    </a>
+                    <a href="#">
+                        <li class="text-white  text-sm leading-12 font-[poppins]">Udemy</li>
+                    </a>
+                    <a href="#">
+                        <li class="text-white  text-sm leading-12 font-[poppins]">Udemy</li>
+                    </a>
+                </div>
+                <div class="leading list-none ">
+                    <li class="text-white  text-sm leading-12 font-[poppins] font-semibold">Front-end Development</li>
+                    <a href="#">
+                        <li class="text-white  text-sm leading-12 font-[poppins]">Html Basics</li>
+                    </a>
+                    <a href="#">
+                        <li class="text-white  text-sm leading-12 font-[poppins]">Css & frameworks</li>
+                    </a>
+                    <a href="#">
+                        <li class="text-white  text-sm leading-12 font-[poppins]">Javascript</li>
+                    </a>
+                </div>
+            </div>
+
+            <div class="leading list-none ">
+                <li class="text-white  text-sm leading-12 font-[poppins] font-semibold">Back-end Development</li>
+                <a href="#">
+                    <li class="text-white  text-sm leading-12 font-[poppins]">Html Basics</li>
+                </a>
+                <a href="#">
+                    <li class="text-white  text-sm leading-12 font-[poppins]">Css & frameworks</li>
+                </a>
+                <a href="#">
+                    <li class="text-white  text-sm leading-12 font-[poppins]">Javascript</li>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- last footer -->
+    <div
+        class="bg-[#5B03C8] max-md:flex-col max-md:items-center flex max-md:justify-center justify-around  p-3 list-none ">
+        <div class="max-md:hidden block mt-6">
+            <a href="#">
+                <li class="text-white  text-xs leading-3 font-[poppins] font-semibold">Lms</li>
+            </a>
+        </div>
+        <div>
+            <li class="text-white  text-xs leading-3 font-[poppins] mt-6">© 2024 All copyrights reserved.</li>
+        </div>
+        <div class="flex gap-3 text-white my-4">
+            <a href="#">
+                <div class="w-6 h-6 border border-white rounded-[100%]  flex justify-center items-center"><i
+                        class="fa-brands fa-x-twitter text-white text-xs"></i></div>
+            </a>
+            <a href="#">
+                <div class="w-6 h-6 border border-white rounded-[100%] flex justify-center items-center"><i
+                        class="fa-brands fa-linkedin-in  text-white text-xs"></i></div>
+            </a>
+            <a href="#">
+                <div class="w-6 h-6  text-white border border-white rounded-[100%] flex justify-center items-center"><i
+                        class="fa-brands fa-instagram text-xs  text-white"></i></div>
+            </a>
+            <a href="#">
+                <div class="w-6 h-6 border border-white rounded-[100%] flex justify-center items-center"><i
+                        class="fa-brands fa-facebook-f text-xs  text-white"></i></div>
+            </a>
+        </div>
+    </div>
+</body>
+
+</html>
